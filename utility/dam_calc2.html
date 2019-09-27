@@ -1,0 +1,196 @@
+<!-- Programed by Chacha_die // -->
+<html>
+<title>伤害计算</title>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<style type="text/css">
+	A{text-decoration:none; font-family:"Charcoal"; color:gray; font-size:11px;}
+	A:HOVER{font-family:"Charcoal"; color:red; font-size:11px; cursor:crosshair;}
+
+	BODY{font-family:"Verdana"; font-size:11px; color:white; background-color:black;}
+	TD{font-family:"Charcoal"; font-size:11px; color:white;}
+</style>
+<script language="javascript" type="text/javascript" src="../preference.js"></script>
+</head>
+
+<body>
+<center>
+<hr>
+<b>真 实 伤 害 报 表</b>
+<hr>
+<br>
+*武器伤害 = (实际武器伤害) + (额外伤害的总数)<BR>
+*盾牌伤害 = (实际盾牌伤害) + (圣盾的额外伤害)<BR>
+("Enhanced Damage" is not calculated in 1.10 mode. Now I am trying to find the fomula)<BR>
+<BR>
+<table border=1>
+<tr>
+	<td colspan=2 align="center" bgcolor="#202020">依赖力量的武器</td>
+	<td colspan=2 align="center" bgcolor="black">依赖敏捷的武器</td>
+	<td colspan=2 align="center" bgcolor="#202020">依赖力量与敏捷的武器</td>
+	<td colspan=2 align="center" bgcolor="black">钉锤类武器</td>
+	<td colspan=2 align="center" bgcolor="#202020">亚玛逊专用标枪</td>
+	<td colspan=2 align="center" bgcolor="black">盾牌伤害</td>
+</tr>
+<tr>
+	<td align="center" bgcolor="#202020">武器伤害</td>
+	<td align="center" bgcolor="#202020">真实伤害</td>
+	<td align="center" bgcolor="black">武器伤害</td>
+	<td align="center" bgcolor="black">真实伤害</td>
+	<td align="center" bgcolor="#202020">武器伤害</td>
+	<td align="center" bgcolor="#202020">真实伤害</td>
+	<td align="center" bgcolor="black">武器伤害</td>
+	<td align="center" bgcolor="black">真实伤害</td>
+	<td align="center" bgcolor="#202020">武器伤害</td>
+	<td align="center" bgcolor="#202020">真实伤害</td>
+	<td align="center" bgcolor="black">盾牌伤害</td>
+	<td align="center" bgcolor="black">真实伤害</td>
+</tr>
+
+<script language="JavaScript">
+<!--
+/* ===== Initialize ===== */
+str1 = opener.document.insheet.str.value * 1;
+dex1 = opener.document.insheet.dex.value * 1;
+bns1 = opener.document.insheet.bns.value * 1;
+ehs1 = opener.document.insheet.ehs.value * 1;
+min1 = opener.document.insheet.mind.value * 1;
+max1 = opener.document.insheet.maxd.value * 1;
+
+st_dx = Math.floor((((str1 + dex1) * 75) & 4294967295) / 100 + 0.99);
+str80 = Math.floor(((str1 * 80) & 4294967295) / 100 + 0.99);
+dex50 = Math.floor(((dex1 * 50) & 4294967295) / 100 + 0.99);
+
+w_dam1 = new Array();
+w_dam2 = new Array();
+w_dam3 = new Array();
+w_dam4 = new Array();
+w_dam5 = new Array();
+w_dam6 = new Array();
+
+d_dam1 = new Array();
+d_dam2 = new Array();
+d_dam3 = new Array();
+d_dam4 = new Array();
+d_dam5 = new Array();
+d_dam6 = new Array();
+
+r_dam1 = new Array();
+r_dam2 = new Array();
+r_dam3 = new Array();
+r_dam4 = new Array();
+r_dam5 = new Array();
+r_dam6 = new Array();
+
+/* ===== Damage Calculation ===== */
+for( i = 0; i <= (max1 - min1); i++){
+	w_dam1[i] = min1 + i;
+	w_dam2[i] = min1 + i;
+	w_dam3[i] = min1 + i;
+	w_dam4[i] = min1 + i;
+	w_dam5[i] = min1 + i;
+	w_dam6[i] = min1 + i;
+
+	if(edit_mode == 9){
+		d_dam1[i] = (str1 + 100 + bns1 + ehs1) * w_dam1[i];
+		d_dam2[i] = (dex1 + 100 + bns1 + ehs1) * w_dam2[i];
+		d_dam3[i] = Math.floor(st_dx + 100 + bns1 + ehs1) * w_dam3[i];
+		d_dam4[i] = Math.floor(str1 * 1.1 + 100 + bns1 + ehs1) * w_dam4[i];
+		d_dam5[i] = Math.floor(str80 + dex50 + 100 + bns1 + ehs1) * w_dam5[i];
+		d_dam6[i] = Math.floor(st_dx + 100 + bns1) * w_dam6[i];
+	}else{
+		d_dam1[i] = (str1 + 100 + bns1) * w_dam1[i];
+		d_dam2[i] = (dex1 + 100 + bns1) * w_dam2[i];
+		d_dam3[i] = Math.floor(st_dx + 100 + bns1) * w_dam3[i];
+		d_dam4[i] = Math.floor(str1 * 1.1 + 100 + bns1) * w_dam4[i];
+		d_dam5[i] = Math.floor(str80 + dex50 + 100 + bns1) * w_dam5[i];
+		d_dam6[i] = Math.floor(st_dx + 100 + bns1) * w_dam6[i];
+	}
+
+	r_dam1[i] = d_dam1[i] & 16777215;
+	r_dam2[i] = d_dam2[i] & 16777215;
+	r_dam3[i] = d_dam3[i] & 16777215;
+	r_dam4[i] = d_dam4[i] & 16777215;
+	r_dam5[i] = d_dam5[i] & 16777215;
+	r_dam6[i] = d_dam6[i] & 16777215;
+
+	if( r_dam1[i] > 8388607 ) r_dam1[i] = 0;
+	if( r_dam2[i] > 8388607 ) r_dam2[i] = 0;
+	if( r_dam3[i] > 8388607 ) r_dam3[i] = 0;
+	if( r_dam4[i] > 8388607 ) r_dam4[i] = 0;
+	if( r_dam5[i] > 8388607 ) r_dam5[i] = 0;
+	if( r_dam6[i] > 8388607 ) r_dam6[i] = 0;
+
+	r_dam1[i] = Math.floor(r_dam1[i] / 100);
+	r_dam2[i] = Math.floor(r_dam2[i] / 100);
+	r_dam3[i] = Math.floor(r_dam3[i] / 100);
+	r_dam4[i] = Math.floor(r_dam4[i] / 100);
+	r_dam5[i] = Math.floor(r_dam5[i] / 100);
+	r_dam6[i] = Math.floor(r_dam6[i] / 200);
+}
+/* ===== Damage Sort and Display===== */
+for( i = 0; i <= (max1 - min1 - 1); i++){
+	for( j = (i + 1); j <= 130; j++){ 
+		if( r_dam1[i] < r_dam1[j] ){
+			w_dm = w_dam1[i];
+			w_dam1[i] = w_dam1[j];
+			w_dam1[j] = w_dm;
+			r_dm = r_dam1[i];
+			r_dam1[i] = r_dam1[j];
+			r_dam1[j] = r_dm;
+		}
+		if( r_dam2[i] < r_dam2[j] ){
+			w_dm = w_dam2[i];
+			w_dam2[i] = w_dam2[j];
+			w_dam2[j] = w_dm;
+			r_dm = r_dam2[i];
+			r_dam2[i] = r_dam2[j];
+			r_dam2[j] = r_dm;
+		}
+		if( r_dam3[i] < r_dam3[j] ){
+			w_dm = w_dam3[i];
+			w_dam3[i] = w_dam3[j];
+			w_dam3[j] = w_dm;
+			r_dm = r_dam3[i];
+			r_dam3[i] = r_dam3[j];
+			r_dam3[j] = r_dm;
+		}
+		if( r_dam4[i] < r_dam4[j] ){
+			w_dm = w_dam4[i];
+			w_dam4[i] = w_dam4[j];
+			w_dam4[j] = w_dm;
+			r_dm = r_dam4[i];
+			r_dam4[i] = r_dam4[j];
+			r_dam4[j] = r_dm;
+		}
+		if( r_dam5[i] < r_dam5[j] ){
+			w_dm = w_dam5[i];
+			w_dam5[i] = w_dam5[j];
+			w_dam5[j] = w_dm;
+			r_dm = r_dam5[i];
+			r_dam5[i] = r_dam5[j];
+			r_dam5[j] = r_dm;
+		}
+		if( r_dam6[i] < r_dam6[j] ){
+			w_dm = w_dam6[i];
+			w_dam6[i] = w_dam6[j];
+			w_dam6[j] = w_dm;
+			r_dm = r_dam6[i];
+			r_dam6[i] = r_dam6[j];
+			r_dam6[j] = r_dm;
+		}
+	}
+	document.write('<tr><td align="right" bgcolor="#202020">',w_dam1[i],'</td><td align="right" bgcolor="#202020">',r_dam1[i],'</td>');
+	document.write('<td align="right" bgcolor="black">',w_dam2[i],'</td><td align="right" bgcolor="black">',r_dam2[i],'</td>');
+	document.write('<td align="right" bgcolor="#202020">',w_dam3[i],'</td><td align="right" bgcolor="#202020">',r_dam3[i],'</td>');
+	document.write('<td align="right" bgcolor="black">',w_dam4[i],'</td><td align="right" bgcolor="black">',r_dam4[i],'</td>');
+	document.write('<td align="right" bgcolor="#202020">',w_dam5[i],'</td><td align="right" bgcolor="#202020">',r_dam5[i],'</td>');
+	document.write('<td align="right" bgcolor="black">',w_dam6[i],'</td><td align="right" bgcolor="black">',r_dam6[i],'</td></tr>');
+}
+document.close();
+// -->
+</script>
+</table>
+</center>
+</body>
+</html>
