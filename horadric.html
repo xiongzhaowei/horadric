@@ -2,27 +2,27 @@
 <html>
 <title>D2X Editor Horadric</title>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
 <style type="text/css">
-	A{text-decoration:none; font-family:"ËÎÌå"; color:white; font-size:13px;}
-	A:HOVER{font-family:"ËÎÌå"; color:gold; font-size:13px; cursor:crosshair;}
+	A{text-decoration:none; font-family:"å®‹ä½“"; color:white; font-size:13px;}
+	A:HOVER{font-family:"å®‹ä½“"; color:gold; font-size:13px; cursor:crosshair;}
 
-	BODY{font-family:"ËÎÌå"; font-size:13px; color:white;}
-	.go{font-family:"ËÎÌå"; font-size:13px;}
+	BODY{font-family:"å®‹ä½“"; font-size:13px; color:white;}
+	.go{font-family:"å®‹ä½“"; font-size:13px;}
 	.gy{color:gray;}
 	.rv{color:white; text-align:left;}
 	.rv2{color:white; background:#606060; text-align:center; width:20px;}
 
-	.menubox{position:absolute; padding:1px; width:670px; overflow:visible; font-family:"ËÎÌå"; font-size:13px; top:0; left:10;  z-index:40}
-	.mainbox{position:absolute; padding:1px; width:670px; height:410px; overflow:visible; font-family:"ËÎÌå"; font-size:13px; color:white; top:-500; left:10; z-index:2}
+	.menubox{position:absolute; padding:1px; width:670px; overflow:visible; font-family:"å®‹ä½“"; font-size:13px; top:0; left:10;  z-index:40}
+	.mainbox{position:absolute; padding:1px; width:670px; height:410px; overflow:visible; font-family:"å®‹ä½“"; font-size:13px; color:white; top:-500; left:10; z-index:2}
 
-	.box1{position:absolute; visibility:hidden; border:2px gray solid; padding:5px; width:220px; overflow:visible; font-family:"ËÎÌå"; font-size:13px; color:white; z-index:85; background:url(./gifs/bg2.gif)}
-	.box2{position:absolute; visibility:hidden; border:2px gray solid; padding:5px; width:250px; overflow:visible; font-family:"ËÎÌå"; font-size:13px; color:white; z-index:80; background:url(./gifs/bg2.gif)}
-	.box3{position:absolute; visibility:hidden; border:2px gray solid; padding:5px; width:650px; overflow:visible; font-family:"ËÎÌå"; font-size:13px; color:white; z-index:98; background:url(./gifs/bg2.gif)}
-	.box4{position:absolute; visibility:hidden; border:2px gray solid; padding:5px; width:260px; overflow:visible; font-family:"ËÎÌå"; font-size:13px; color:white; z-index:70; background:url(./gifs/bg2.gif)}
-	.box5{position:absolute; visibility:hidden; border:2px gray solid; padding:5px; width:500px; overflow:visible; font-family:"ËÎÌå"; font-size:13px; color:white; z-index:60; background:url(./gifs/bg2.gif)}
-	.boxh{position:absolute; visibility:hidden; border:2px gray solid; padding:3px; width:140px; overflow:visible; font-family:"ËÎÌå"; font-size:13px; color:white; z-index:99; background:url(./gifs/bg2.gif)}
+	.box1{position:absolute; visibility:hidden; border:2px gray solid; padding:5px; width:220px; overflow:visible; font-family:"å®‹ä½“"; font-size:13px; color:white; z-index:85; background:url(./gifs/bg2.gif)}
+	.box2{position:absolute; visibility:hidden; border:2px gray solid; padding:5px; width:250px; overflow:visible; font-family:"å®‹ä½“"; font-size:13px; color:white; z-index:80; background:url(./gifs/bg2.gif)}
+	.box3{position:absolute; visibility:hidden; border:2px gray solid; padding:5px; width:650px; overflow:visible; font-family:"å®‹ä½“"; font-size:13px; color:white; z-index:98; background:url(./gifs/bg2.gif)}
+	.box4{position:absolute; visibility:hidden; border:2px gray solid; padding:5px; width:260px; overflow:visible; font-family:"å®‹ä½“"; font-size:13px; color:white; z-index:70; background:url(./gifs/bg2.gif)}
+	.box5{position:absolute; visibility:hidden; border:2px gray solid; padding:5px; width:500px; overflow:visible; font-family:"å®‹ä½“"; font-size:13px; color:white; z-index:60; background:url(./gifs/bg2.gif)}
+	.boxh{position:absolute; visibility:hidden; border:2px gray solid; padding:3px; width:140px; overflow:visible; font-family:"å®‹ä½“"; font-size:13px; color:white; z-index:99; background:url(./gifs/bg2.gif)}
 
 	.mat1{color:#909090; cursor:crosshair; font-size:1px; width:20px; height:20px;}
 	.mat2{color:#909090; cursor:crosshair; font-size:1px; background-repeat:no-repeat; background-position:center center;}
@@ -43,18 +43,40 @@
 <script language="JavaScript1.2" type="text/javascript" src="./utility/db_rare.js"></script>
 <script language="JavaScript1.2" type="text/javascript" src="./utility/pre_load.js"></script>
 <script language="JavaScript1.2" type="text/javascript" src="./utility/main.js"></script>
-<SCRIPT language="VBS">
-Function OpenFile(Path)
-Dim http,bin,index
-Set http = CreateObject("Msxml2.XMLHTTP")
-http.open "GET",Path,false
-http.send
-bin=http.responseBody
-For index=1 To LenB(bin)
-OpenFile=OpenFile & Right("0" & Hex(AscB(MidB(bin,index,1))),2)
-Next
-End Function
-</SCRIPT>
+<script type="text/javascript">
+	function importFile(input) {  
+		//ç›´æ¥è¯»å–.d2sæ–‡ä»¶ï¼Œæ–°æµè§ˆå™¨ä¸æ”¯æŒVBSï¼Œæ”¹æˆJSå®ç°
+		//chrome IE10  
+		if (window.FileReader) {  
+			var file = input.files[0];  
+			filename = file.name.split(".")[0];  
+			var reader = new FileReader();  
+			reader.onloadend = function() {
+				bin=new Uint8Array(reader.result);
+				hexStr="";
+				console.log(bin.length,bin[0]);
+				for(i=0;i<bin.length;i++){
+					var s='0' + parseInt(bin[i]).toString(16)
+					//ç¡®ä¿æ˜¯ä¸¤ä½æ•°çš„HEX
+					s=s.substr(s.length-2,2);
+					hexStr += s.toUpperCase();
+				}
+				document.import_sheet.hex_data.value=hexStr;
+			}  
+			reader.readAsArrayBuffer(file);
+		}   
+		//IE 7 8 9 10 æœªå†™
+		else if (typeof window.ActiveXObject != 'undefined'){
+			alert('IE');
+		}   
+		//æ”¯æŒFF æœªå†™
+		else if (document.implementation && document.implementation.createDocument) {
+			alert('Firefox');
+		} else {
+			alert('error');
+		}   
+	}
+</script>
 
 </head>
 
@@ -71,7 +93,7 @@ End Function
 			<td style="width:77px;"><img src="./gifs/buttons1/mercenary1.gif" border=0 onMouseOver="this.src=b1_mercenary2.src" onMouseOut="this.src=b1_mercenary1.src" onMouseDown="this.src=b1_mercenary3.src" onMouseUp="this.src=b1_mercenary2.src" onClick="scr_change(4)"></td>
 			<td style="width:77px;"><img src="./gifs/buttons1/items1.gif" border=0 onMouseOver="this.src=b1_items2.src" onMouseOut="this.src=b1_items1.src" onMouseDown="this.src=b1_items3.src" onMouseUp="this.src=b1_items2.src" onClick="scr_change(5)"></td>
 			<td style="width:77px;"><img src="./gifs/buttons1/create1.gif" border=0 onMouseOver="this.src=b1_create2.src" onMouseOut="this.src=b1_create1.src" onMouseDown="this.src=b1_create3.src" onMouseUp="this.src=b1_create2.src" onClick="scr_change(6)"></td>
-			<td style="width:77px;"><img src="./gifs/buttons1/clear1.gif" border=0 onMouseOver="this.src=b1_clear2.src;poph('<font color=red>ÖØÔØÒ³Ãæ£¬ËùÓĞ×ÊÁÏ¶¼½«±»Çå³ı</font>')" onMouseOut="this.src=b1_clear1.src;unpoph()" onMouseDown="this.src=b1_clear3.src" onMouseUp="this.src=b1_clear2.src" onClick="clear_all()"></td>
+			<td style="width:77px;"><img src="./gifs/buttons1/clear1.gif" border=0 onMouseOver="this.src=b1_clear2.src;poph('<font color=red>é‡è½½é¡µé¢ï¼Œæ‰€æœ‰èµ„æ–™éƒ½å°†è¢«æ¸…é™¤</font>')" onMouseOut="this.src=b1_clear1.src;unpoph()" onMouseDown="this.src=b1_clear3.src" onMouseUp="this.src=b1_clear2.src" onClick="clear_all()"></td>
 		</tr>
 	</table>
 </span>
@@ -86,30 +108,30 @@ End Function
 <BR>
 <BR>
 <BR>
-Èç¹ûÄãÒª´´½¨ĞÂ½ÇÉ«£¬Äã¿ÉÒÔÌø¹ı´Ë²½ÖèÖ±½Ó½øĞĞÏÂÒ»²½²Ù×÷¡£<br>
+å¦‚æœä½ è¦åˆ›å»ºæ–°è§’è‰²ï¼Œä½ å¯ä»¥è·³è¿‡æ­¤æ­¥éª¤ç›´æ¥è¿›è¡Œä¸‹ä¸€æ­¥æ“ä½œã€‚<br>
 <br>
-Çë°ÑËùÓĞµÄÊ®Áù½øÖÆ×ÊÁÏ¸´ÖÆµ½ÏÂÃæµÄÎÄ×Ö¿òºó£¬µã»÷¡°»ãÈë¡±°´Å¥¡£<br>
-(Èç¹ûÄãÃ»ÓĞÊ®Áù½øÖÆÎÄ±¾±à¼­Æ÷£¬Çë<a href="http://www.baidu.com/s?ie=gb2312&cl=3&wd=WinHex+%BA%BA%BB%AF%D7%A2%B2%E1%B0%E6" target="_blank">µã»÷ÕâÀï</a>²éÕÒ WinHex¡£)<BR>
-*×¢Òâ£ºv1.09 »ò v1.10 µÄ´æµµÊı¾İ¶¼¿ÉÒÔ»ãÈë¡£<BR><BR>
+è¯·æŠŠæ‰€æœ‰çš„åå…­è¿›åˆ¶èµ„æ–™å¤åˆ¶åˆ°ä¸‹é¢çš„æ–‡å­—æ¡†åï¼Œç‚¹å‡»â€œæ±‡å…¥â€æŒ‰é’®ã€‚<br>
+(å¦‚æœä½ æ²¡æœ‰åå…­è¿›åˆ¶æ–‡æœ¬ç¼–è¾‘å™¨ï¼Œè¯·<a href="http://www.baidu.com/s?ie=gb2312&cl=3&wd=WinHex+%BA%BA%BB%AF%D7%A2%B2%E1%B0%E6" target="_blank">ç‚¹å‡»è¿™é‡Œ</a>æŸ¥æ‰¾ WinHexã€‚)<BR>
+*æ³¨æ„ï¼šv1.09 æˆ– v1.10 çš„å­˜æ¡£æ•°æ®éƒ½å¯ä»¥æ±‡å…¥ã€‚<BR><BR>
 
 <form name="import_sheet" enctype="text/plain">
-<table border=0><tr><td align=center width=339 height=19 style="background-image:url(./gifs/s_import/title.gif)"><font size=-1 face="ËÎÌå" color="#FFFFFF" style="background-color:#000000;">´æ µµ ×Ê ÁÏ</font></td></tr></table>
+<table border=0><tr><td align=center width=339 height=19 style="background-image:url(./gifs/s_import/title.gif)"><font size=-1 face="å®‹ä½“" color="#FFFFFF" style="background-color:#000000;">å­˜ æ¡£ èµ„ æ–™</font></td></tr></table>
 <table border=0>
 	<tr>
-		<td><textarea name="hex_data"></textarea></td>
+		<td><textarea name="hex_data" style="width:486px;"></textarea></td>
 	</tr>
 	<tr>
-		<td><input type='file' style='width:480px; ' onchange='document.import_sheet.hex_data.value=OpenFile(this.value);' /></td>
+		<td><input type='file' style='width:480px;' onchange='importFile(this);' /></td>
 	</tr>
 </table>
 <br>
 <img src="./gifs/buttons2/import1.gif" border=0 onMouseOver="this.src=b2_import2.src" onMouseOut="this.src=b2_import1.src" onMouseDown="this.src=b2_import3.src" onMouseUp="this.src=b2_import2.src" onClick="importing()">
 </form>
-»ãÈëºóÈç¹û³¤Ê±¼äÃ»ÓĞÌø³öÌáÊ¾¿òÔò±íÊ¾»ãÈëÊ§°Ü¡£<br>
+æ±‡å…¥åå¦‚æœé•¿æ—¶é—´æ²¡æœ‰è·³å‡ºæç¤ºæ¡†åˆ™è¡¨ç¤ºæ±‡å…¥å¤±è´¥ã€‚<br>
 <br>
-¾¯¸æ£º±à¼­×ÊÁÏÇ°Çë²»ÒªÍü¼ÇÏÈ±¸·İ£¡<br>
+è­¦å‘Šï¼šç¼–è¾‘èµ„æ–™å‰è¯·ä¸è¦å¿˜è®°å…ˆå¤‡ä»½ï¼<br>
 <BR>
-<a href="./utility/imp_help.html" target="_blank">[ Ê²Ã´ÊÇ»ãÈë? ]</a>
+<a href="./utility/imp_help.html" target="_blank">[ ä»€ä¹ˆæ˜¯æ±‡å…¥? ]</a>
 </span>
 
 <!-- ==================================================== //-->
@@ -120,12 +142,12 @@ End Function
 <table border=0 cellspacing=0 cellpadding=0>
 <form name="stats_sheet" enctype="text/plain">
 <tr><td>
-<table border=0><tr><td colspan=4 align=center width=339 height=19 style="background-image:url(./gifs/s_stats/title.gif);"><font style='background-color:#000000; font-size:12px; color:#FFFFFF; font-family:"ËÎÌå"'>&nbsp;&nbsp;ÈË Îï »ù ±¾ Êô ĞÔ&nbsp;&nbsp;</font></td></tr></table>
+<table border=0><tr><td colspan=4 align=center width=339 height=19 style="background-image:url(./gifs/s_stats/title.gif);"><font style='background-color:#000000; font-size:12px; color:#FFFFFF; font-family:"å®‹ä½“"'>&nbsp;&nbsp;äºº ç‰© åŸº æœ¬ å± æ€§&nbsp;&nbsp;</font></td></tr></table>
 <table border=0 cellspacing=3 cellpadding=0>
 	<tr>
-		<td align=center width=65 height=19 style="background-image:url(./gifs/s_stats/name.gif);"><font style='background-color:#000000; font-size:12px; color:#FFFFFF; font-family:"ËÎÌå"'>Ãû ×Ö</font></td>
+		<td align=center width=65 height=19 style="background-image:url(./gifs/s_stats/name.gif);"><font style='background-color:#000000; font-size:12px; color:#FFFFFF; font-family:"å®‹ä½“"'>å å­—</font></td>
 		<td><input type="text" name="chr_name" size="15" maxlength=15 onChange="chr_name_chk(this.value)"></td>
-		<td align=center width=65 height=19 style="background-image:url(./gifs/s_stats/class.gif);"><font style='background-color:#000000; font-size:12px; color:#FFFFFF; font-family:"ËÎÌå"'>Ö° Òµ</font></td>
+		<td align=center width=65 height=19 style="background-image:url(./gifs/s_stats/class.gif);"><font style='background-color:#000000; font-size:12px; color:#FFFFFF; font-family:"å®‹ä½“"'>èŒ ä¸š</font></td>
 		<td>
 <script language="JavaScript1.2">
 <!--
@@ -133,20 +155,20 @@ document.write('<select name="chr_class" class=pull onChange="skill_setting(); a
 document.write(BOS_type ? ' style="width:' + (BOS_type == 1 ? '100px">' : '110px">') : '>');
 //-->
 </script>
-				<option value=0 selected>ÑÇÂêÑ·
-				<option value=1>·¨Ê¦
-				<option value=2>ËÀÁé·¨Ê¦
-				<option value=3>Ê¥ÆïÊ¿
-				<option value=4>Ò°ÂùÈË
-				<option value=5>µÂÂ³ÒÀ
-				<option value=6>´Ì¿Í
+				<option value=0 selected>äºšé©¬é€Š
+				<option value=1>æ³•å¸ˆ
+				<option value=2>æ­»çµæ³•å¸ˆ
+				<option value=3>åœ£éª‘å£«
+				<option value=4>é‡è›®äºº
+				<option value=5>å¾·é²ä¾
+				<option value=6>åˆºå®¢
 			</select>
 		</td>
 	</tr>
 	<tr>
-		<td align=center width=65 height=19 style="background-image:url(./gifs/s_stats/level.gif);"><font style='background-color:#000000; font-size:12px; color:#FFFFFF; font-family:"ËÎÌå"'>µÈ ¼¶</font></td>
+		<td align=center width=65 height=19 style="background-image:url(./gifs/s_stats/level.gif);"><font style='background-color:#000000; font-size:12px; color:#FFFFFF; font-family:"å®‹ä½“"'>ç­‰ çº§</font></td>
 		<td><input type="text" name="chr_lvl" size="15" value=1 onChange="experience(); arcal()"></td>
-		<td align=center width=65 height=19 style="background-image:url(./gifs/s_stats/progress.gif);"><font style='background-color:#000000; font-size:12px; color:#FFFFFF; font-family:"ËÎÌå"'>&nbsp;&nbsp;³Æ ºÅ&nbsp;&nbsp;</font></td>
+		<td align=center width=65 height=19 style="background-image:url(./gifs/s_stats/progress.gif);"><font style='background-color:#000000; font-size:12px; color:#FFFFFF; font-family:"å®‹ä½“"'>ç§° å·</font></td>
 		<td>
 <script language="JavaScript1.2">
 <!--
@@ -154,53 +176,53 @@ document.write('<select name="chr_prog" class=pull');
 document.write(BOS_type ? ' style="width:' + (BOS_type == 1 ? '100px">' : '110px;">') : '>');
 //-->
 </script>
-				<option value=0 selected>None
-				<option value=1>Slayer
-				<option value=2>Champion
-				<option value=3>Patriarch
+				<option value=0 selected>æ— 
+				<option value=1>æ€æ‰‹
+				<option value=2>å† å†›
+				<option value=3>æ—é•¿
 			</select>
 		</td>
 	</tr>
 	<tr>
-		<td align=center width=65 height=19 style="background-image:url(./gifs/s_stats/strength.gif);"><font style='background-color:#000000; font-size:12px; color:#FFFFFF; font-family:"ËÎÌå"'>&nbsp;&nbsp;Á¦ Á¿&nbsp;&nbsp;</font></td>
+		<td align=center width=65 height=19 style="background-image:url(./gifs/s_stats/strength.gif);"><font style='background-color:#000000; font-size:12px; color:#FFFFFF; font-family:"å®‹ä½“"'>åŠ› é‡</font></td>
 		<td><input type="text" name="chr_str" size="15" value=100></td>
-		<td align=center width=65 height=19 style="background-image:url(./gifs/s_stats/vitality.gif);"><font style='background-color:#000000; font-size:12px; color:#FFFFFF; font-family:"ËÎÌå"'>&nbsp;&nbsp;Ìå Á¦&nbsp;&nbsp;</font></td>
+		<td align=center width=65 height=19 style="background-image:url(./gifs/s_stats/vitality.gif);"><font style='background-color:#000000; font-size:12px; color:#FFFFFF; font-family:"å®‹ä½“"'>ä½“ åŠ›</font></td>
 		<td><input type="text" name="chr_vit" size="15" value=100></td>
 	</tr>
 	<tr>
-		<td align=center width=65 height=19 style="background-image:url(./gifs/s_stats/dexterity.gif);"><font style='background-color:#000000; font-size:12px; color:#FFFFFF; font-family:"ËÎÌå"'>&nbsp;&nbsp;Ãô ½İ&nbsp;&nbsp;</font></td>
+		<td align=center width=65 height=19 style="background-image:url(./gifs/s_stats/dexterity.gif);"><font style='background-color:#000000; font-size:12px; color:#FFFFFF; font-family:"å®‹ä½“"'>æ• æ·</font></td>
 		<td><input type="text" name="chr_dex" size="15" value=100 onChange="arcal()"></td>
-		<td align=center width=65 height=19 style="background-image:url(./gifs/s_stats/energy.gif);"><font style='background-color:#000000; font-size:12px; color:#FFFFFF; font-family:"ËÎÌå"'>&nbsp;¾« Á¦&nbsp;</font></td>
+		<td align=center width=65 height=19 style="background-image:url(./gifs/s_stats/energy.gif);"><font style='background-color:#000000; font-size:12px; color:#FFFFFF; font-family:"å®‹ä½“"'>ç²¾ åŠ›</font></td>
 		<td><input type="text" name="chr_ene" size="15" value=100></td>
 	</tr>
 	<tr>
-		<td align=center width=65 height=19 style="background-image:url(./gifs/s_stats/life.gif);"><font style='background-color:#000000; font-size:12px; color:#FFFFFF; font-family:"ËÎÌå"'>Éú Ãü</font></td>
+		<td align=center width=65 height=19 style="background-image:url(./gifs/s_stats/life.gif);"><font style='background-color:#000000; font-size:12px; color:#FFFFFF; font-family:"å®‹ä½“"'>ç”Ÿ å‘½</font></td>
 		<td colspan=4><input type="text" name="chr_life0" size="15" value=100> / <input type="text" name="chr_life1" size="15" value=100></td>
 	</tr>
 	<tr>
-		<td align=center width=65 height=19 style="background-image:url(./gifs/s_stats/mana.gif);"><font style='background-color:#000000; font-size:12px; color:#FFFFFF; font-family:"ËÎÌå"'>·¨ Á¦</font></td>
+		<td align=center width=65 height=19 style="background-image:url(./gifs/s_stats/mana.gif);"><font style='background-color:#000000; font-size:12px; color:#FFFFFF; font-family:"å®‹ä½“"'>æ³• åŠ›</font></td>
 		<td colspan=4><input type="text" name="chr_mana0" size="15" value=100> / <input type="text" name="chr_mana1" size="15" value=100></td>
 	</tr>
 	<tr>
-		<td align=center width=65 height=19 style="background-image:url(./gifs/s_stats/stamina.gif);"><font style='background-color:#000000; font-size:12px; color:#FFFFFF; font-family:"ËÎÌå"'>&nbsp;&nbsp;ÄÍ Á¦&nbsp;&nbsp;</font></td>
+		<td align=center width=65 height=19 style="background-image:url(./gifs/s_stats/stamina.gif);"><font style='background-color:#000000; font-size:12px; color:#FFFFFF; font-family:"å®‹ä½“"'>è€ åŠ›</font></td>
 		<td colspan=4><input type="text" name="chr_sta0" size="15" value=100> / <input type="text" name="chr_sta1" size="15" value=100></td>
 	</tr>
 	<tr>
-		<td align=center width=65 height=19 style="background-image:url(./gifs/s_stats/chrgold.gif);"><font style='background-color:#000000; font-size:12px; color:#FFFFFF; font-family:"ËÎÌå"'>½ÇÉ«½ğ±Ò</font></td>
+		<td align=center width=65 height=19 style="background-image:url(./gifs/s_stats/chrgold.gif);"><font style='background-color:#000000; font-size:12px; color:#FFFFFF; font-family:"å®‹ä½“"'>è§’è‰²é‡‘å¸</font></td>
 		<td><input type="text" name="chr_gold0" size="15" value=0></td>
-		<td align=center width=65 height=19 style="background-image:url(./gifs/s_stats/stashgold.gif);"><font style='background-color:#000000; font-size:12px; color:#FFFFFF; font-family:"ËÎÌå"'>&nbsp;´¢Ïä½ğ±Ò&nbsp;</font></td>
+		<td align=center width=65 height=19 style="background-image:url(./gifs/s_stats/stashgold.gif);"><font style='background-color:#000000; font-size:12px; color:#FFFFFF; font-family:"å®‹ä½“"'>å‚¨ç®±é‡‘å¸</font></td>
 		<td><input type="text" name="chr_gold1" size="15" value=0></td>
 	</tr>
 	<tr>
-		<td align=center width=65 height=19 style="background-image:url(./gifs/s_stats/experience.gif);"><font style='background-color:#000000; font-size:12px; color:#FFFFFF; font-family:"ËÎÌå"'>&nbsp;&nbsp;¾­ÑéÖµ&nbsp;&nbsp;</font></td>
-		<td><input type="text" name="chr_exp0" size="15" value=0 onMouseOver="poph('»ù±¾ÉÏÄú²»ĞèÒªĞŞ¸ÄÕâÒ»Ïî×ÊÁÏ£¬ÒòÎªÕâÊÇÓÉ Horadric ĞŞ¸ÄÆ÷¼ÆËã×Ô¶¯Éú³ÉµÄ¡£')" onMouseOut="unpoph()"></td>
-		<td align=center width=65 height=19 style="background-image:url(./gifs/s_stats/nextlevel.gif);"><font style='background-color:#000000; font-size:12px; color:#FFFFFF; font-family:"ËÎÌå"'>Éı¼¶¾­ÑéÖµ</font></td>
+		<td align=center width=65 height=19 style="background-image:url(./gifs/s_stats/experience.gif);"><font style='background-color:#000000; font-size:12px; color:#FFFFFF; font-family:"å®‹ä½“"'>ç»éªŒå€¼</font></td>
+		<td><input type="text" name="chr_exp0" size="15" value=0 onMouseOver="poph('åŸºæœ¬ä¸Šæ‚¨ä¸éœ€è¦ä¿®æ”¹è¿™ä¸€é¡¹èµ„æ–™ï¼Œå› ä¸ºè¿™æ˜¯ç”± Horadric ä¿®æ”¹å™¨è®¡ç®—è‡ªåŠ¨ç”Ÿæˆçš„ã€‚')" onMouseOut="unpoph()"></td>
+		<td align=center width=65 height=19 style="background-image:url(./gifs/s_stats/nextlevel.gif);"><font style='background-color:#000000; font-size:12px; color:#FFFFFF; font-family:"å®‹ä½“"'>å‡çº§ç»éªŒå€¼</font></td>
 		<td><span id="chr_exp1">500</span></td>
 	</tr>
 	<tr>
-		<td align=center width=65 height=19 style="background-image:url(./gifs/s_stats/statpoint.gif);"><font style='background-color:#000000; font-size:12px; color:#FFFFFF; font-family:"ËÎÌå"'>Ê£ÓàÊôĞÔµã</font></td>
+		<td align=center width=65 height=19 style="background-image:url(./gifs/s_stats/statpoint.gif);"><font style='background-color:#000000; font-size:12px; color:#FFFFFF; font-family:"å®‹ä½“"'>å‰©ä½™å±æ€§ç‚¹</font></td>
 		<td><input type="text" name="chr_stat" size="15" value=0></td>
-		<td align=center width=65 height=19 style="background-image:url(./gifs/s_stats/skillpoint.gif);"><font style='background-color:#000000; font-size:12px; color:#FFFFFF; font-family:"ËÎÌå"'>Ê£Óà¼¼ÄÜµã</font></td>
+		<td align=center width=65 height=19 style="background-image:url(./gifs/s_stats/skillpoint.gif);"><font style='background-color:#000000; font-size:12px; color:#FFFFFF; font-family:"å®‹ä½“"'>å‰©ä½™æŠ€èƒ½ç‚¹</font></td>
 		<td><input type="text" name="chr_skill" size="15" value=0></td>
 	</tr>
 </table>
@@ -224,20 +246,20 @@ document.write('<input type="hidden" name="siteurl" value="' + dl_site + '">');
 </script>
 
 	<table border=1>
-	<tr><td align=center>ÃüÖĞÂÊ</td><td align=center>ÉËº¦</td></tr>
+	<tr><td align=center>å‘½ä¸­ç‡</td><td align=center>ä¼¤å®³</td></tr>
 	<tr><td>
 
 	<table border=0 cellspacing=0 cellpadding=0>
 		<tr>
-			<td>ÃüÖĞÂÊ¼Ó³Ë×Ü¼Æ (%):</td>
-			<td><input type="text" name="ar_bns1" value=0 size=5 onChange="arcal()" onMouseOver="poph('ÊäÈëÈÎÒâÕûÊıÀ´°ïÄúÕÒµ½×îºÃµÄÃüÖĞÂÊ¡£')" onMouseOut="unpoph()"> %</td>
+			<td>å‘½ä¸­ç‡åŠ ä¹˜æ€»è®¡ (%):</td>
+			<td><input type="text" name="ar_bns1" value=0 size=5 onChange="arcal()" onMouseOver="poph('è¾“å…¥ä»»æ„æ•´æ•°æ¥å¸®æ‚¨æ‰¾åˆ°æœ€å¥½çš„å‘½ä¸­ç‡ã€‚')" onMouseOut="unpoph()"> %</td>
 		</tr>
 		<tr>
-			<td>ÃüÖĞÂÊ¼Ó³Ë×Ü¼Æ (ÒÀµÈ¼¶):&nbsp;</td>
-			<td><input type="text" name="ar_bns2" value=0 size=5 onChange="arcal()" onMouseOver="poph('ÊäÈëÈÎÒâÕûÊıÀ´°ïÄúÕÒµ½×îºÃµÄÃüÖĞÂÊ¡£<br>*ÒÀÈËÎïµÈ¼¶Ôö¼Ó')" onMouseOut="unpoph()"> (=<span id="bns20">0</span>%)</td>
+			<td>å‘½ä¸­ç‡åŠ ä¹˜æ€»è®¡ (ä¾ç­‰çº§):&nbsp;</td>
+			<td><input type="text" name="ar_bns2" value=0 size=5 onChange="arcal()" onMouseOver="poph('è¾“å…¥ä»»æ„æ•´æ•°æ¥å¸®æ‚¨æ‰¾åˆ°æœ€å¥½çš„å‘½ä¸­ç‡ã€‚<br>*ä¾äººç‰©ç­‰çº§å¢åŠ ')" onMouseOut="unpoph()"> (=<span id="bns20">0</span>%)</td>
 		</tr>
 		<tr>
-			<td align=right>*ÏÔÊ¾ÔÚ×´Ì¬´°¿ÚµÄÃüÖĞÂÊ =&nbsp;</td>
+			<td align=right>*æ˜¾ç¤ºåœ¨çŠ¶æ€çª—å£çš„å‘½ä¸­ç‡ =&nbsp;</td>
 			<td id="ar" style="color:gold">0</td>
 		</tr>
 	</table>
@@ -246,21 +268,21 @@ document.write('<input type="hidden" name="siteurl" value="' + dl_site + '">');
 
 	<table border=0 cellspacing=0 cellpadding=0>
 		<tr>
-			<td align=right>ÎäÆ÷ÉËº¦·¶Î§ :&nbsp;</td>
-			<td><input type="text" name="wep_mindam" value=1 size=6 onMouseOver="poph('ÊäÈë×îĞ¡ÉËº¦À´¼ÆËã¾«È·µÄÉËº¦Öµ¡£')" onMouseOut="unpoph()"> - <input type="text" name="wep_maxdam" value=100 size=6 onMouseOver="poph('ÊäÈë×î´óÉËº¦À´¼ÆËã¾«È·µÄÉËº¦Öµ¡£')" onMouseOut="unpoph()"></td>
+			<td align=right>æ­¦å™¨ä¼¤å®³èŒƒå›´ :&nbsp;</td>
+			<td><input type="text" name="wep_mindam" value=1 size=6 onMouseOver="poph('è¾“å…¥æœ€å°ä¼¤å®³æ¥è®¡ç®—ç²¾ç¡®çš„ä¼¤å®³å€¼ã€‚')" onMouseOut="unpoph()"> - <input type="text" name="wep_maxdam" value=100 size=6 onMouseOver="poph('è¾“å…¥æœ€å¤§ä¼¤å®³æ¥è®¡ç®—ç²¾ç¡®çš„ä¼¤å®³å€¼ã€‚')" onMouseOut="unpoph()"></td>
 		</tr>
 		<tr>
-			<td align=right>ÔöÇ¿ÉËº¦×Ü¼Æ(%) :&nbsp;</td>
-			<td><input type="text" name="dmg_bns" value=0 size=6 onMouseOver="poph('Õâ²»ÊÇÎäÆ÷µÄÉËº¦¼Ó³Ë£¬ÊäÈëÕûÊıÀ´¼ÆËã¾«È·µÄÉËº¦Öµ¡£')" onMouseOut="unpoph()"> %</td>
+			<td align=right>å¢å¼ºä¼¤å®³æ€»è®¡(%) :&nbsp;</td>
+			<td><input type="text" name="dmg_bns" value=0 size=6 onMouseOver="poph('è¿™ä¸æ˜¯æ­¦å™¨çš„ä¼¤å®³åŠ ä¹˜ï¼Œè¾“å…¥æ•´æ•°æ¥è®¡ç®—ç²¾ç¡®çš„ä¼¤å®³å€¼ã€‚')" onMouseOut="unpoph()"> %</td>
 		</tr>
 		<tr>
 		<tr>
-			<td align=right>¼¼ÄÜÉËº¦¼Ó³Ë(%) :&nbsp;</td>
-			<td><input type="text" name="skill_bns" value=0 size=6 onMouseOver="poph('Ò»Ğ©¼¼ÄÜ¶ÔÉËº¦µÄ¼Ó³Ë°Ù·Ö±È£¬ÊäÈëÕûÊıÀ´¼ÆËã¾«È·µÄÉËº¦Öµ¡£')" onMouseOut="unpoph()"> %</td>
+			<td align=right>æŠ€èƒ½ä¼¤å®³åŠ ä¹˜(%) :&nbsp;</td>
+			<td><input type="text" name="skill_bns" value=0 size=6 onMouseOver="poph('ä¸€äº›æŠ€èƒ½å¯¹ä¼¤å®³çš„åŠ ä¹˜ç™¾åˆ†æ¯”ï¼Œè¾“å…¥æ•´æ•°æ¥è®¡ç®—ç²¾ç¡®çš„ä¼¤å®³å€¼ã€‚')" onMouseOut="unpoph()"> %</td>
 		</tr>
 		<tr>
-			<td align=right>*»ùÓÚÊôĞÔµÄÕæÊµÉËº¦ =&nbsp;</td>
-			<td><input type="button" name="go" value="µã»÷ÕâÀï" onclick="gocal()" onMouseOver="poph('½«´ò¿ªÒ»¸öĞÂ´°¿ÚÓÃÓÚÏÔÊ¾ÕæÊµÉËº¦±¨±í¡£')" onMouseOut="unpoph()"></td>
+			<td align=right>*åŸºäºå±æ€§çš„çœŸå®ä¼¤å®³ =&nbsp;</td>
+			<td><input type="button" name="go" value="ç‚¹å‡»è¿™é‡Œ" onclick="gocal()" onMouseOver="poph('å°†æ‰“å¼€ä¸€ä¸ªæ–°çª—å£ç”¨äºæ˜¾ç¤ºçœŸå®ä¼¤å®³æŠ¥è¡¨ã€‚')" onMouseOut="unpoph()"></td>
 		</tr>
 	</table>
 
@@ -280,10 +302,10 @@ document.write('<input type="hidden" name="siteurl" value="' + dl_site + '">');
 <script language="JavaScript1.2">
 <!--
 dum0 = "</td><td><select name='skeyID' class=pull style='width:180px'>";
-for(k = 0; k < all_skill_max; k++) dum0 += "<option value='-1'>ÎŞ";
+for(k = 0; k < all_skill_max; k++) dum0 += "<option value='-1'>æ— ";
 dum0 += "</select>";
 
-dum1 = "<select name='skeyLR' class=pull" + (BOS_type ? (" style='width:" + (BOS_type == 1 ? "60px'" : "70px'")) : "") + "><option value=1 selected>×óÊÖ<option value=0>ÓÒÊÖ";
+dum1 = "<select name='skeyLR' class=pull" + (BOS_type ? (" style='width:" + (BOS_type == 1 ? "60px'" : "70px'")) : "") + "><option value=1 selected>å·¦æ‰‹<option value=0>å³æ‰‹";
 
 dum2 = "";
 
@@ -311,7 +333,7 @@ document.write(dum2);
 <BR>
 <BR>
 <form name="skill_sheet" enctype="text/plain">
-<table border=0><tr><td colspan=6 align=center width=339 height=19 style="background-image:url(./gifs/s_skill/title.gif);"><font style='background-color:#000000; font-size:12px; color:#FFFFFF; font-family:"ËÎÌå"'>¼¼ ÄÜ ĞÅ Ï¢</font></td></tr></table>
+<table border=0><tr><td colspan=6 align=center width=339 height=19 style="background-image:url(./gifs/s_skill/title.gif);"><font style='background-color:#000000; font-size:12px; color:#FFFFFF; font-family:"å®‹ä½“"'>æŠ€ èƒ½ ä¿¡ æ¯</font></td></tr></table>
 <table border=0 cellspacing=2 cellpadding=0>
 <script language="JavaScript1.2">
 <!--
@@ -334,7 +356,7 @@ document.write(dum1);
 
 </table>
 </form>
-<img src="./gifs/buttons6/fullskill1.gif" border=0 onMouseOver="this.src=b6_fullskill2.src;poph('ËùÓĞ¼¼ÄÜ½«±»Éè¶¨Îª99¼¶¡£')" onMouseOut="this.src=b6_fullskill1.src;unpoph()" onMouseDown="this.src=b6_fullskill3.src" onMouseUp="this.src=b6_fullskill2.src" onClick="apply_fullskill()">&nbsp;<img src="./gifs/buttons6/shortcut1.gif" border=0 onMouseOver="this.src=b6_shortcut2.src;poph('Äú¿ÉÒÔÎª¸ÃÈËÎïÒÑÓĞµÄ¼¼ÄÜÉè¶¨¿ì½İ¼ü (°üº¬±»¶¯¼¼ÄÜ)¡£')" onMouseOut="this.src=b6_shortcut1.src;unpoph()" onMouseDown="this.src=b6_shortcut3.src" onMouseUp="this.src=b6_shortcut2.src" onClick="open_shortcut()"><BR>
+<img src="./gifs/buttons6/fullskill1.gif" border=0 onMouseOver="this.src=b6_fullskill2.src;poph('æ‰€æœ‰æŠ€èƒ½å°†è¢«è®¾å®šä¸º99çº§ã€‚')" onMouseOut="this.src=b6_fullskill1.src;unpoph()" onMouseDown="this.src=b6_fullskill3.src" onMouseUp="this.src=b6_fullskill2.src" onClick="apply_fullskill()">&nbsp;<img src="./gifs/buttons6/shortcut1.gif" border=0 onMouseOver="this.src=b6_shortcut2.src;poph('æ‚¨å¯ä»¥ä¸ºè¯¥äººç‰©å·²æœ‰çš„æŠ€èƒ½è®¾å®šå¿«æ·é”® (åŒ…å«è¢«åŠ¨æŠ€èƒ½)ã€‚')" onMouseOut="this.src=b6_shortcut1.src;unpoph()" onMouseDown="this.src=b6_shortcut3.src" onMouseUp="this.src=b6_shortcut2.src" onClick="open_shortcut()"><BR>
 </span>
 <!--<script language="JavaScript1.2">alert("3");</script>//-->
 <!-- ======================================================== //-->
@@ -345,37 +367,37 @@ document.write(dum1);
 <table border=0>
 	<form name="merc_edit" enctype="text/plain">
 	<tr><td align=center>
-<table border=0><tr><td colspan=4 align=center width=339 height=19 style="background-image:url(./gifs/s_mercenary/title.gif);"><font style='background-color:#000000; font-size:12px; color:#FFFFFF; font-family:"ËÎÌå"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ó¶ ±ø ĞÅ Ï¢&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></td></tr></table>
+<table border=0><tr><td colspan=4 align=center width=339 height=19 style="background-image:url(./gifs/s_mercenary/title.gif);"><font style='background-color:#000000; font-size:12px; color:#FFFFFF; font-family:"å®‹ä½“"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ä½£ å…µ ä¿¡ æ¯&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></td></tr></table>
 
 <table border=0>
 	<tr>
 		<td colspan=4 align=center>
-			<input type="checkbox" name="mercon" value=1 class=chkbx onMouseOver="poph('Èç¹û¹´Ñ¡£¬Äú½«ÓĞÓ¶±øÒÔ¼°ËûµÄ×°±¸¡£<br>*Õâ¸öÑ¡ÏîÓĞ¿ÉÄÜ²»ÄÜÕı³£ÔË×÷£¬Èç¹ûÄúÄ¿Ç°Ã»ÓĞÓ¶±ø£¬Ç¿ÁÒ½¨ÒéÄúÔÚ¹´Ñ¡ÕâÒ»ÏîÇ°ÏÈÔÚÓÎÏ·Àï¹ÍÒ»ÃûÓ¶±ø¡£')" onMouseOut="unpoph()" onChange="this.form.merc_exp.value = get_mercexp()"> Ê¹ÓÃÓ¶±ø
+			<input type="checkbox" name="mercon" value=1 class=chkbx onMouseOver="poph('å¦‚æœå‹¾é€‰ï¼Œæ‚¨å°†æœ‰ä½£å…µä»¥åŠä»–çš„è£…å¤‡ã€‚<br>*è¿™ä¸ªé€‰é¡¹æœ‰å¯èƒ½ä¸èƒ½æ­£å¸¸è¿ä½œï¼Œå¦‚æœæ‚¨ç›®å‰æ²¡æœ‰ä½£å…µï¼Œå¼ºçƒˆå»ºè®®æ‚¨åœ¨å‹¾é€‰è¿™ä¸€é¡¹å‰å…ˆåœ¨æ¸¸æˆé‡Œé›‡ä¸€åä½£å…µã€‚')" onMouseOut="unpoph()" onChange="this.form.merc_exp.value = get_mercexp()"> ä½¿ç”¨ä½£å…µ
 			&nbsp;&nbsp;&nbsp;&nbsp;
-			<input type="checkbox" name="mercdie" value=1 class=chkbx onMouseOver="poph('Èç¹û¹´Ñ¡£¬ÔÚÓÎÏ·¿ªÊ¼Ê±ÄúµÄÓ¶±ø×´Ì¬ÎªËÀÍö¡£')" onMouseOut="unpoph()"> ËÀÍö
+			<input type="checkbox" name="mercdie" value=1 class=chkbx onMouseOver="poph('å¦‚æœå‹¾é€‰ï¼Œåœ¨æ¸¸æˆå¼€å§‹æ—¶æ‚¨çš„ä½£å…µçŠ¶æ€ä¸ºæ­»äº¡ã€‚')" onMouseOut="unpoph()"> æ­»äº¡
 		</td>
 	</tr>
 	<tr>
 		<td width=140 align=center>
-			<input type="radio" name="merc_select" value=0 class=radbt checked onChange="this.form.merc_exp.value = get_mercexp()">ÂÜ¸ñÀËÈË
+			<input type="radio" name="merc_select" value=0 class=radbt checked onChange="this.form.merc_exp.value = get_mercexp()">èæ ¼æµªäºº
 			<table border=1>
 				<tr><td width=90><img src="./gifs/rogue.gif"></td></tr>
 			</table>
 		</td>
 		<td width=140 align=center>
-			<input type="radio" name="merc_select" value=1 class=radbt onChange="this.form.merc_exp.value = get_mercexp()">É³Ä®ÓÂÊ¿
+			<input type="radio" name="merc_select" value=1 class=radbt onChange="this.form.merc_exp.value = get_mercexp()">æ²™æ¼ å‹‡å£«
 			<table border=1>
 				<tr><td width=90><img src="./gifs/desert.gif"></td></tr>
 			</table>
 		</td>
 		<td width=140 align=center>
-			<input type="radio" name="merc_select" value=2 class=radbt onChange="this.form.merc_exp.value = get_mercexp()">ÌúÀÇ
+			<input type="radio" name="merc_select" value=2 class=radbt onChange="this.form.merc_exp.value = get_mercexp()">é“ç‹¼
 			<table border=1>
 				<tr><td width=90><img src="./gifs/east.gif"></td></tr>
 			</table>
 		</td>
 		<td width=140 align=center>
-			<input type="radio" name="merc_select" value=3 class=radbt onChange="this.form.merc_exp.value = get_mercexp()">Ò°ÂùÈË
+			<input type="radio" name="merc_select" value=3 class=radbt onChange="this.form.merc_exp.value = get_mercexp()">é‡è›®äºº
 			<table border=1>
 				<tr><td width=90><img src="./gifs/barb.gif"></td></tr>
 			</table>
@@ -435,8 +457,8 @@ document.write('<select name="rogue_skill" class=pull onChange="this.form.merc_e
 document.write(BOS_type ? ' style="width:' + (BOS_type == 1 ? '100px;">' : '100px;">') : '>');
 //-->
 </script>
-				<option value=0 selected>»ğ¼ı
-				<option value=1>±ù¼ı
+				<option value=0 selected>ç«ç®­
+				<option value=1>å†°ç®­
 			</select>
 		</td>
 		<td align=center>
@@ -446,9 +468,9 @@ document.write('<select name="desert_skill" class=pull onChange="this.form.merc_
 document.write(BOS_type ? ' style="width:' + (BOS_type == 1 ? '100px;">' : '80px;">') : '>');
 //-->
 </script>
-				<option value=0 selected>Õ½¶·
-				<option value=1>·ÀÓù
-				<option value=2>¹¥»÷
+				<option value=0 selected>æˆ˜æ–—
+				<option value=1>é˜²å¾¡
+				<option value=2>æ”»å‡»
 			</select>
 		</td>
 		<td align=center>
@@ -458,9 +480,9 @@ document.write('<select name="east_skill" class=pull onChange="this.form.merc_ex
 document.write(BOS_type ? ' style="width:' + (BOS_type == 1 ? '100px;">' : '110px;">') : '>');
 //-->
 </script>
-				<option value=0 selected>»ğÏµ
-				<option value=1>±ùÏµ
-				<option value=2>µçÏµ
+				<option value=0 selected>ç«ç³»
+				<option value=1>å†°ç³»
+				<option value=2>ç”µç³»
 			</select>
 		</td>
 		<td></td>
@@ -469,30 +491,30 @@ document.write(BOS_type ? ' style="width:' + (BOS_type == 1 ? '100px;">' : '110p
 <br>
 <table border=1>
 	<tr>
-		<td align=center colspan=2><font color=gold>ÆäËûÊôĞÔ</font></td>
-		<td align=center colspan=2><font color=gold>»ù±¾µãÊı</font></td>
-		<td align=center colspan=2><font color=gold>ÉËº¦¼ÆËã</font></td>
+		<td align=center colspan=2><font color=gold>å…¶ä»–å±æ€§</font></td>
+		<td align=center colspan=2><font color=gold>åŸºæœ¬ç‚¹æ•°</font></td>
+		<td align=center colspan=2><font color=gold>ä¼¤å®³è®¡ç®—</font></td>
 	</tr>
 	<tr>
-		<td align=center>ÄÑ¶È</td>
-		<td onMouseOver="poph('Èç¹ûÄúÒÑ¾­ÓĞÓ¶±øÁË£¬ÇëÎğĞŞ¸ÄÕâÀï£¬ÒòÎªÔÚÄ³Ğ©Çé¿öÏÂµ±Ó¶±ø¹¥»÷µĞÈËÊ±»áµ¼ÖÂÓÎÏ·µ±»ú¡£')" onMouseOut="unpoph()">
+		<td align=center>éš¾åº¦</td>
+		<td onMouseOver="poph('å¦‚æœæ‚¨å·²ç»æœ‰ä½£å…µäº†ï¼Œè¯·å‹¿ä¿®æ”¹è¿™é‡Œï¼Œå› ä¸ºåœ¨æŸäº›æƒ…å†µä¸‹å½“ä½£å…µæ”»å‡»æ•Œäººæ—¶ä¼šå¯¼è‡´æ¸¸æˆå½“æœºã€‚')" onMouseOut="unpoph()">
 <script language="JavaScript1.2">
 <!--
 document.write('<select name="merc_dif" class=pull onChange="this.form.merc_exp.value = get_mercexp()"');
 document.write(BOS_type ? ' style="width:' + (BOS_type == 1 ? '100px;">' : '100px;">') : '>');
 //-->
 </script>
-				<option value=0>ÆÕÍ¨
-				<option value=1>¶ñÃÎ
-				<option value=2 selected>µØÓü
+				<option value=0>æ™®é€š
+				<option value=1>æ¶æ¢¦
+				<option value=2 selected>åœ°ç‹±
 			</select>
 		</td>
-		<td align=center>ÉúÃü</td><td id="merc_life" width=50 align=center>0</td>
-		<td align=center>ÏÔÊ¾µÄÁ¦Á¿</td>
+		<td align=center>ç”Ÿå‘½</td><td id="merc_life" width=50 align=center>0</td>
+		<td align=center>æ˜¾ç¤ºçš„åŠ›é‡</td>
 		<td><input type="text" name="merc_str2" value=0 style="width:80px" onChange="get_mercdam()"></td>
 	</tr>
 	<tr>
-		<td align=center>µÈ¼¶</td>
+		<td align=center>ç­‰çº§</td>
 		<td>
 			<select name="merc_lvl" class=pull style="width:50px" onChange="this.form.merc_exp.value = get_mercexp()">
 <script language="JavaScript1.2">
@@ -503,15 +525,15 @@ document.write("<option seleted>0" + dum);
 //-->
 </script>
 		</td>
-		<td align=center>Á¦Á¿</td><td id="merc_str" align=center>0</td>
-		<td align=center>ÏÔÊ¾µÄÃô½İ</td>
+		<td align=center>åŠ›é‡</td><td id="merc_str" align=center>0</td>
+		<td align=center>æ˜¾ç¤ºçš„æ•æ·</td>
 		<td><input type="text" name="merc_dex2" value=0 style="width:80px" onChange="get_mercdam()"></td>
 	</tr>
 	<tr>
-		<td align=center>¾­ÑéÖµ</td>
+		<td align=center>ç»éªŒå€¼</td>
 		<td><input type="text" name="merc_exp" value=0 size=10 onClick="this.disabled = true"></td>
-		<td align=center>Ãô½İ</td><td id="merc_dex" align=center>0</td>
-		<td align=center>ÎäÆ÷ÉËº¦</td>
+		<td align=center>æ•æ·</td><td id="merc_dex" align=center>0</td>
+		<td align=center>æ­¦å™¨ä¼¤å®³</td>
 		<td>
 			<input type="text" name="merc_min" value=0 style="width:40px" onChange="get_mercdam()"> - 
 			<input type="text" name="merc_max" value=0 style="width:40px" onChange="get_mercdam()">
@@ -520,8 +542,8 @@ document.write("<option seleted>0" + dum);
 	<tr>
 		<td align=center>ID</td>
 		<td><input type="text" name="merc_IDd" value="00000000" size=10 onChange="merc_ID0 = this.value"></td>
-		<td align=center>ÃüÖĞÂÊ</td><td id="merc_ar" align=center>0</td>
-		<td align=center><font color=gold>ÏÔÊ¾µÄÉËº¦Öµ</font></td>
+		<td align=center>å‘½ä¸­ç‡</td><td id="merc_ar" align=center>0</td>
+		<td align=center><font color=gold>æ˜¾ç¤ºçš„ä¼¤å®³å€¼</font></td>
 		<td id="merc_dam" style="color:gold" align=center>0 - 0</td>
 	</tr>
 </table>
@@ -530,7 +552,7 @@ document.write("<option seleted>0" + dum);
 	</form>
 </table>
 <br>
-¾¯¸æ£ºĞŞ¸ÄID»òÄÑ¶È¿ÉÄÜµ¼ÖÂÓÎÏ·µ±»ú(Äú¿ÉÒÔÓÃ±¾ĞŞ¸ÄÆ÷ĞŞ¸´)¡£
+è­¦å‘Šï¼šä¿®æ”¹IDæˆ–éš¾åº¦å¯èƒ½å¯¼è‡´æ¸¸æˆå½“æœº(æ‚¨å¯ä»¥ç”¨æœ¬ä¿®æ”¹å™¨ä¿®å¤)ã€‚
 <input type="text" name="dummytext0" style="width:0px;visibility:hidden">
 </span>
 <!--<script language="JavaScript1.2">alert("4");</script>//-->
@@ -543,7 +565,7 @@ document.write("<option seleted>0" + dum);
 <center>
 <table border=0 cellspacing=1 cellpadding=0>
 <form name="sel_opt" enctype="text/plain">
-	<tr><td align=center width=250 height=19 style="background-image:url(./gifs/s_item/title7.gif);"><font style='background-color:#000000; font-size:12px; color:#FFFFFF; font-family:"ËÎÌå"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Êô ĞÔ Àà ±ğ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></td></tr>
+	<tr><td align=center width=250 height=19 style="background-image:url(./gifs/s_item/title7.gif);"><font style='background-color:#000000; font-size:12px; color:#FFFFFF; font-family:"å®‹ä½“"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;å± æ€§ ç±» åˆ«&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></td></tr>
 	<tr>
 		<td>
 			<select name="mcat_list" size="10" class=lis style="width:250px;" onChange="mcat_change(this.selectedIndex)">
@@ -555,7 +577,7 @@ for(i = 0; i < 19; i++) document.write('<option value=' + i + '>' + mcat_name[i]
 			</select>
 		</td>
 	</tr>
-	<tr><td align=center height=19 style="background-image:url(./gifs/s_item/title8.gif);"><font style='background-color:#000000; font-size:12px; color:#FFFFFF; font-family:"ËÎÌå"'>&nbsp;&nbsp;&nbsp;Êô ĞÔ ÁĞ ±í&nbsp;&nbsp;&nbsp;</font></td></tr>
+	<tr><td align=center height=19 style="background-image:url(./gifs/s_item/title8.gif);"><font style='background-color:#000000; font-size:12px; color:#FFFFFF; font-family:"å®‹ä½“"'>&nbsp;&nbsp;&nbsp;å± æ€§ åˆ— è¡¨&nbsp;&nbsp;&nbsp;</font></td></tr>
 	<tr>
 		<td>
 			<select name="opt_select" size="12" class=lis style="width:250px;">
@@ -812,9 +834,9 @@ document.write(BOS_type ? ' style="width:' + (BOS_type == 1 ? '45px;">' : '45px;
 	</tr>
 	</form>
 </table>
-¾¯¸æ£º²¿·Ö¡°ÆäËû¡±Àà¼¼¿ÉÄÜÎŞ·¨Õı³£¹¤
-×÷£¬ËüÃÇÊÇÔÚ 1.09 °æ±¾ÖĞÖÆ×÷µÄ¡£ÔÚ 
-1.10 Àï£¬Ä³Ğ©¼¼ÄÜ¿ÉÄÜÊ¹ÓÎÏ·Òì³£ÖÕÖ¹¡£
+è­¦å‘Šï¼šéƒ¨åˆ†â€œå…¶ä»–â€ç±»æŠ€å¯èƒ½æ— æ³•æ­£å¸¸å·¥
+ä½œï¼Œå®ƒä»¬æ˜¯åœ¨ 1.09 ç‰ˆæœ¬ä¸­åˆ¶ä½œçš„ã€‚åœ¨ 
+1.10 é‡Œï¼ŒæŸäº›æŠ€èƒ½å¯èƒ½ä½¿æ¸¸æˆå¼‚å¸¸ç»ˆæ­¢ã€‚
 </center>
 </div>
 
@@ -832,8 +854,8 @@ document.write('<select name="inex_select" class=pull');
 document.write(BOS_type ? ' style="width:' + (BOS_type == 1 ? '100px;">' : '100px;">') : '>');
 //-->
 </script>
-	<option selected>v1.10×°±¸
-	<option>v1.09×°±¸
+	<option selected>v1.10è£…å¤‡
+	<option>v1.09è£…å¤‡
 </select>
 	</td></tr>
 	</form>
@@ -965,10 +987,10 @@ for(i = 0; i < 45; i++) document.write('<option value="-1">');
 <!-- =================== Batch Sheet =================== //-->
 <span class=box5 id="batch_sheet">
 <br>
-[ ÅúÁ¿ĞŞ¸Ä ]<br><br>
+[ æ‰¹é‡ä¿®æ”¹ ]<br><br>
 <form name="bat_form" enctype="text/plain">
 <select name="bat_type" class=pull style="width:80px" onChange="change_bat_type(this.selectedIndex)">
-	<option selected>Ìí¼Ó<option>ÒÆ³ı
+	<option selected>æ·»åŠ <option>ç§»é™¤
 </select>
 <br>
 <input type="text" name="bat_att" value=0 style="width:40px" onClick="magic_select_on(99)" onChange="change_bat_att(this.value)">
@@ -976,40 +998,40 @@ for(i = 0; i < 45; i++) document.write('<option value="-1">');
 <br>
 <table border=0>
 	<tr>
-		<td>(ÊıÖµ:</td>
+		<td>(æ•°å€¼:</td>
 		<td>
 			<input type="text" name="bat_value" value=0 style="width:70px" onClick="click_bat_val()" onChange="change_bat_val(this.value)">
 		</td>
 		<td>)</td>
 	</tr>
 </table>
-<span id="bat_tofrom">µ½</span><br>
+<span id="bat_tofrom">åˆ°</span><br>
 <select name="bat_item" class=pull style="width:100px">
-	<option selected>ËùÓĞ»¤Éí·û
-	<option>Pic0»¤Éí·û
-	<option>Pic1»¤Éí·û
-	<option>Pic2»¤Éí·û
-	<option>ËùÓĞÖé±¦
-	<option>Pic0Öé±¦
-	<option>Pic1Öé±¦
-	<option>Pic2Öé±¦
-	<option>Pic3Öé±¦
-	<option>Pic4Öé±¦
-	<option>Pic5Öé±¦
-	<option>ËùÓĞÎïÆ·
+	<option selected>æ‰€æœ‰æŠ¤èº«ç¬¦
+	<option>Pic0æŠ¤èº«ç¬¦
+	<option>Pic1æŠ¤èº«ç¬¦
+	<option>Pic2æŠ¤èº«ç¬¦
+	<option>æ‰€æœ‰ç å®
+	<option>Pic0ç å®
+	<option>Pic1ç å®
+	<option>Pic2ç å®
+	<option>Pic3ç å®
+	<option>Pic4ç å®
+	<option>Pic5ç å®
+	<option>æ‰€æœ‰ç‰©å“
 </select>
 <select name="bat_place" class=pull style="width:140px">
-	<option selected>±³°ü
-	<option>×°±¸
-	<option>·½¿é
-	<option>Ïä×Ó
-	<option>Ó¶±ø×°±¸
-	<option>ÕĞ»½ÉúÎï×°±¸
-	<option>µ±Ç°ËùÔÚ
+	<option selected>èƒŒåŒ…
+	<option>è£…å¤‡
+	<option>æ–¹å—
+	<option>ç®±å­
+	<option>ä½£å…µè£…å¤‡
+	<option>æ‹›å”¤ç”Ÿç‰©è£…å¤‡
+	<option>å½“å‰æ‰€åœ¨
 </select>
 <br><br>
-<input type="button" name="bat_go" value="È·¶¨" onClick="bat_proceed()">
-<input type="button" name="bat_close" value="¹Ø±Õ" onClick="close_batsheet()">
+<input type="button" name="bat_go" value="ç¡®å®š" onClick="bat_proceed()">
+<input type="button" name="bat_close" value="å…³é—­" onClick="close_batsheet()">
 <input type="text" name="dummytext" style="width:0px;visibility:hidden">
 </form>
 </span>
@@ -1209,7 +1231,7 @@ document.write(dum0);
 <!-- =================== Sockets Sheet =================== //-->
 			<table border=0 cellspacing=1 cellpadding=0>
 				<form name="socket_sheet" enctype="text/plain">
-				<tr><td colspan=2 class=rv><img src="./gifs/s_item/socket.gif" border=0 onMouseOver="poph('×°±¸°¼²ÛÖĞµÄÎïÆ·½«ÔÚÕâÀïÏÔÊ¾¡£')" onMouseOut="unpoph()"></td></tr>
+				<tr><td colspan=2 class=rv><img src="./gifs/s_item/socket.gif" border=0 onMouseOver="poph('è£…å¤‡å‡¹æ§½ä¸­çš„ç‰©å“å°†åœ¨è¿™é‡Œæ˜¾ç¤ºã€‚')" onMouseOut="unpoph()"></td></tr>
 <script language="JavaScript1.2">
 <!--
 for(i = 0; i < 4; i++){
@@ -1227,12 +1249,12 @@ for(i = 0; i < 4; i++){
 <table boreder=0 cellspacing=1 cellpadding=0>
 	<form name="etc_form">
 	<tr>
-		<td><input type="checkbox" name="f_winflg" value=1 class=chkbx checked onMouseOver="poph('Ñ¡Ôñºó£¬ÏÔÊ¾¸¡¶¯µÄÎïÆ·´°¿Ú¡£')" onMouseOut="unpoph()"></td>
-		<td style="font-size:12px; font-family:'ËÎÌå'">¸¡¶¯´°¿Ú</td>
+		<td><input type="checkbox" name="f_winflg" value=1 class=chkbx checked onMouseOver="poph('é€‰æ‹©åï¼Œæ˜¾ç¤ºæµ®åŠ¨çš„ç‰©å“çª—å£ã€‚')" onMouseOut="unpoph()"></td>
+		<td style="font-size:12px; font-family:'å®‹ä½“'">æµ®åŠ¨çª—å£</td>
 	</tr>
 	<tr>
-		<td><input type="checkbox" name="del_conf" value=1 class=chkbx checked onMouseOver="poph('Ñ¡Ôñºó£¬É¾³ı×°±¸»òÊôĞÔÊ±»áÒªÇóÄúÈ·ÈÏ¡£')" onMouseOut="unpoph()"></td>
-		<td style="font-size:12px; font-family:'ËÎÌå'">É¾³ıÇ°È·ÈÏ</td>
+		<td><input type="checkbox" name="del_conf" value=1 class=chkbx checked onMouseOver="poph('é€‰æ‹©åï¼Œåˆ é™¤è£…å¤‡æˆ–å±æ€§æ—¶ä¼šè¦æ±‚æ‚¨ç¡®è®¤ã€‚')" onMouseOut="unpoph()"></td>
+		<td style="font-size:12px; font-family:'å®‹ä½“'">åˆ é™¤å‰ç¡®è®¤</td>
 	</tr>
 	</form>
 </table>
@@ -1248,7 +1270,7 @@ for(i = 0; i < 4; i++){
 	<table border=0 cellspacing=0 cellpadding=0>
 		<tr>
 			<td colspan=6 align=center width=340 height=19 style="background-image:url(./gifs/s_item/title1.gif)">
-				Ñ¡ÔñµÄÎïÆ·&nbsp;<span id="pick_no0"></span>
+				é€‰æ‹©çš„ç‰©å“&nbsp;<span id="pick_no0"></span>
 			</td>
 		</tr>
 		<tr>
@@ -1275,17 +1297,17 @@ document.write('<select name="pick_qua" class=pull onChange="item_quality_change
 document.write(BOS_type ? ' width:' + (BOS_type == 1 ? '65px">' : '75px">') : '">');
 //-->
 </script>
-					<option value=1>°×É«µÍ¼¶
-					<option value=2>°×É«ÆÕÍ¨
-					<option value=3>°×É«¸ß¼¶
-					<option value=4>À¶É«
-					<option value=5>Ì××°
-					<option value=6>»ÆÉ«
-					<option value=7>°µ½ğ
-					<option value=8>³ÈÉ«
+					<option value=1>ç™½è‰²ä½çº§
+					<option value=2>ç™½è‰²æ™®é€š
+					<option value=3>ç™½è‰²é«˜çº§
+					<option value=4>è“è‰²
+					<option value=5>å¥—è£…
+					<option value=6>é»„è‰²
+					<option value=7>æš—é‡‘
+					<option value=8>æ©™è‰²
 				</select>&nbsp;
 				<span id="pick_eth_hid" style="visibility:hidden">
-					<input type="checkbox" name="pick_eth" value=1 class=chkbx onChange="item_ethereal[this.form.pick_no.value]=this.checked">ÎŞĞÎ
+					<input type="checkbox" name="pick_eth" value=1 class=chkbx onChange="item_ethereal[this.form.pick_no.value]=this.checked">æ— å½¢
 				</span>
 				&nbsp;&nbsp;
 <script language="JavaScript1.2">
@@ -1294,14 +1316,14 @@ document.write('<select name="pick_pic" class=pull onChange="item_pictype_change
 document.write(BOS_type ? ' width:' + (BOS_type == 1 ? '75px">' : '75px">') : '">');
 //-->
 </script>
-					<option value=0>Í¼Æ¬ 0
-					<option value=1>Í¼Æ¬ 1
-					<option value=2>Í¼Æ¬ 2
-					<option value=3>Í¼Æ¬ 3
-					<option value=4>Í¼Æ¬ 4
-					<option value=5>Í¼Æ¬ 5
-					<option value=6>Í¼Æ¬ 6
-					<option value=7>Í¼Æ¬ 7
+					<option value=0>å›¾ç‰‡ 0
+					<option value=1>å›¾ç‰‡ 1
+					<option value=2>å›¾ç‰‡ 2
+					<option value=3>å›¾ç‰‡ 3
+					<option value=4>å›¾ç‰‡ 4
+					<option value=5>å›¾ç‰‡ 5
+					<option value=6>å›¾ç‰‡ 6
+					<option value=7>å›¾ç‰‡ 7
 				</select>
 			</td>
 		</tr>
@@ -1351,29 +1373,29 @@ document.write('<td><input type="text" size=' + (BOS_type == 1 ? '3' : '4') + ' 
 	</table>
 	<table border=0 cellspacing=0 cellpadding=0 width=340>
 		<tr>
-<td><img src="./gifs/buttons5/pickup1.gif" border=0 onMouseOver="this.src=b5_pickup2.src;poph('Ñ¡ÖĞÎïÆ·À´ÒÆ¶¯¡¢ĞŞ¸ÄÀàĞÍ»òÉ¾³ı¡£<br><font color=red>¿ì½İ·½Ê½£ºÊó±êË«»÷</font>')" onMouseOut="this.src=b5_pickup1.src;unpoph()" onMouseDown="this.src=b5_pickup3.src" onMouseUp="this.src=b5_pickup2.src" onClick="item_pickup()" id="item_pick"></td>
+<td><img src="./gifs/buttons5/pickup1.gif" border=0 onMouseOver="this.src=b5_pickup2.src;poph('é€‰ä¸­ç‰©å“æ¥ç§»åŠ¨ã€ä¿®æ”¹ç±»å‹æˆ–åˆ é™¤ã€‚<br><font color=red>å¿«æ·æ–¹å¼ï¼šé¼ æ ‡åŒå‡»</font>')" onMouseOut="this.src=b5_pickup1.src;unpoph()" onMouseDown="this.src=b5_pickup3.src" onMouseUp="this.src=b5_pickup2.src" onClick="item_pickup()" id="item_pick"></td>
 
-<td><img src="./gifs/buttons5/create1.gif" border=0 onMouseOver="this.src=b5_create2.src;poph('´´½¨ĞÂÎïÆ·<br><font color=red>¿ì½İ¼ü£º Shift + A</font>')" onMouseOut="this.src=b5_create1.src;unpoph()" onMouseDown="this.src=b5_create3.src" onMouseUp="this.src=b5_create2.src" onClick="item_create()" id="item_cre"></td>
+<td><img src="./gifs/buttons5/create1.gif" border=0 onMouseOver="this.src=b5_create2.src;poph('åˆ›å»ºæ–°ç‰©å“<br><font color=red>å¿«æ·é”®ï¼š Shift + A</font>')" onMouseOut="this.src=b5_create1.src;unpoph()" onMouseDown="this.src=b5_create3.src" onMouseUp="this.src=b5_create2.src" onClick="item_create()" id="item_cre"></td>
 
-<td><img src="./gifs/buttons5/copy1.gif" border=0 onMouseOver="this.src=b5_copy2.src;poph('¸´ÖÆÑ¡ÖĞµÄÎïÆ·<br><font color=red>¿ì½İ¼ü£º Shift + S</font>')" onMouseOut="this.src=b5_copy1.src;unpoph()" onMouseDown="this.src=b5_copy3.src" onMouseUp="this.src=b5_copy2.src" onClick="item_copy()" id="item_copyy"></td>
+<td><img src="./gifs/buttons5/copy1.gif" border=0 onMouseOver="this.src=b5_copy2.src;poph('å¤åˆ¶é€‰ä¸­çš„ç‰©å“<br><font color=red>å¿«æ·é”®ï¼š Shift + S</font>')" onMouseOut="this.src=b5_copy1.src;unpoph()" onMouseDown="this.src=b5_copy3.src" onMouseUp="this.src=b5_copy2.src" onClick="item_copy()" id="item_copyy"></td>
 
-<td><img src="./gifs/buttons5/delete1.gif" border=0 onMouseOver="this.src=b5_delete2.src;poph('É¾³ıÑ¡ÖĞµÄÎïÆ·<br><font color=red>¿ì½İ¼ü£º Shift + D</font>')" onMouseOut="this.src=b5_delete1.src;unpoph()" onMouseDown="this.src=b5_delete3.src" onMouseUp="this.src=b5_delete2.src" onClick="item_delete()"></td>
+<td><img src="./gifs/buttons5/delete1.gif" border=0 onMouseOver="this.src=b5_delete2.src;poph('åˆ é™¤é€‰ä¸­çš„ç‰©å“<br><font color=red>å¿«æ·é”®ï¼š Shift + D</font>')" onMouseOut="this.src=b5_delete1.src;unpoph()" onMouseDown="this.src=b5_delete3.src" onMouseUp="this.src=b5_delete2.src" onClick="item_delete()"></td>
 		</tr>
 		<tr>
-<td><img src="./gifs/buttons5/list1.gif" border=0 onMouseOver="this.src=b5_list2.src;poph('ÏÔÊ¾ÄúµÄÎïÆ·£¬°üÀ¨É¾³ıµôµÄÎïÆ·¡£')" onMouseOut="this.src=b5_list1.src;unpoph()" onMouseDown="this.src=b5_list3.src" onMouseUp="this.src=b5_list2.src" onClick="itemlist_open()"></td>
+<td><img src="./gifs/buttons5/list1.gif" border=0 onMouseOver="this.src=b5_list2.src;poph('æ˜¾ç¤ºæ‚¨çš„ç‰©å“ï¼ŒåŒ…æ‹¬åˆ é™¤æ‰çš„ç‰©å“ã€‚')" onMouseOut="this.src=b5_list1.src;unpoph()" onMouseDown="this.src=b5_list3.src" onMouseUp="this.src=b5_list2.src" onClick="itemlist_open()"></td>
 
-<td><img src="./gifs/buttons5/import1.gif" border=0 onMouseOver="this.src=b5_import2.src;poph('´Ód2iÎÄ¼şÊäÈëÎïÆ·×ÊÁÏ')" onMouseOut="this.src=b5_import1.src;unpoph()" onMouseDown="this.src=b5_import3.src" onMouseUp="this.src=b5_import2.src" onClick="item_import()"></td>
+<td><img src="./gifs/buttons5/import1.gif" border=0 onMouseOver="this.src=b5_import2.src;poph('ä»d2iæ–‡ä»¶è¾“å…¥ç‰©å“èµ„æ–™')" onMouseOut="this.src=b5_import1.src;unpoph()" onMouseDown="this.src=b5_import3.src" onMouseUp="this.src=b5_import2.src" onClick="item_import()"></td>
 
-<td><img src="./gifs/buttons5/export1.gif" border=0 onMouseOver="this.src=b5_export2.src;poph('ÓÃJamellaÏàÈİ¸ñÊ½Êä³öÎïÆ·×ÊÁÏ')" onMouseOut="this.src=b5_export1.src;unpoph()" onMouseDown="this.src=b5_export3.src" onMouseUp="this.src=b5_export2.src" onClick="item_export(1)"></td>
+<td><img src="./gifs/buttons5/export1.gif" border=0 onMouseOver="this.src=b5_export2.src;poph('ç”¨Jamellaç›¸å®¹æ ¼å¼è¾“å‡ºç‰©å“èµ„æ–™')" onMouseOut="this.src=b5_export1.src;unpoph()" onMouseDown="this.src=b5_export3.src" onMouseUp="this.src=b5_export2.src" onClick="item_export(1)"></td>
 
-<td><img src="./gifs/buttons5/reminder1.gif" border=0 onMouseOver="this.src=b5_reminder2.src;poph('Äú¿ÉÒÔÀûÓÃCookie·½±ãµÄ¶ÁĞ´ÎïÆ·×ÊÁÏ')" onMouseOut="this.src=b5_reminder1.src;unpoph()" onMouseDown="this.src=b5_reminder3.src" onMouseUp="this.src=b5_reminder2.src" onClick="remind_open()"></td>
+<td><img src="./gifs/buttons5/reminder1.gif" border=0 onMouseOver="this.src=b5_reminder2.src;poph('æ‚¨å¯ä»¥åˆ©ç”¨Cookieæ–¹ä¾¿çš„è¯»å†™ç‰©å“èµ„æ–™')" onMouseOut="this.src=b5_reminder1.src;unpoph()" onMouseDown="this.src=b5_reminder3.src" onMouseUp="this.src=b5_reminder2.src" onClick="remind_open()"></td>
 		</tr>
 	</table>
 </td></tr>
 <tr><td align=center style="background:url(./gifs/s_item/title2.gif)" width=340>
 	<table border=0 cellspacing=0 cellpadding=0 width=340 height=19>
 		<tr>
-			<td width=320><font style='background-color:#000000; font-size:12px; color:#FFFFFF; font-family:"ËÎÌå"'>&nbsp;´úÂë&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Êô ĞÔ ÁĞ ±í&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Öµ&nbsp;&nbsp;</font></td>
+			<td width=320><font style='background-color:#000000; font-size:12px; color:#FFFFFF; font-family:"å®‹ä½“"'>&nbsp;ä»£ç &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;å± æ€§ åˆ— è¡¨&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;å€¼&nbsp;&nbsp;</font></td>
 			<td width=20 id="opt_page" align=center></td>
 		</tr>
 	</table>
@@ -1400,13 +1422,13 @@ document.write(dum3);
 	<input type="hidden" name="item_is_picked" value=0>
 	<table border=0 cellspacing=0 cellpadding=0 width=340>
 		<tr>
-<td><img src="./gifs/buttons6/up1.gif" border=0 onMouseOver="this.src=b6_up2.src;poph('ÊôĞÔÖØĞÂÅÅĞò<br><font color=red>¿ì½İ¼ü£º Shift + Z</font>')" onMouseOut="this.src=b6_up1.src;unpoph()" onMouseDown="this.src=b6_up3.src" onMouseUp="this.src=b6_up2.src" onClick="option_up()"></td>
+<td><img src="./gifs/buttons6/up1.gif" border=0 onMouseOver="this.src=b6_up2.src;poph('å±æ€§é‡æ–°æ’åº<br><font color=red>å¿«æ·é”®ï¼š Shift + Z</font>')" onMouseOut="this.src=b6_up1.src;unpoph()" onMouseDown="this.src=b6_up3.src" onMouseUp="this.src=b6_up2.src" onClick="option_up()"></td>
 
-<td><img src="./gifs/buttons6/down1.gif" border=0 onMouseOver="this.src=b6_down2.src;poph('ÊôĞÔÖØĞÂÅÅĞò<br><font color=red>¿ì½İ¼ü£º Shift + X</font>')" onMouseOut="this.src=b6_down1.src;unpoph()" onMouseDown="this.src=b6_down3.src" onMouseUp="this.src=b6_down2.src" onClick="option_down()"></td>
+<td><img src="./gifs/buttons6/down1.gif" border=0 onMouseOver="this.src=b6_down2.src;poph('å±æ€§é‡æ–°æ’åº<br><font color=red>å¿«æ·é”®ï¼š Shift + X</font>')" onMouseOut="this.src=b6_down1.src;unpoph()" onMouseDown="this.src=b6_down3.src" onMouseUp="this.src=b6_down2.src" onClick="option_down()"></td>
 
-<td><img src="./gifs/buttons5/delete1.gif" border=0 onMouseOver="this.src=b6_delete2.src;poph('É¾³ıÑ¡ÖĞµÄÊôĞÔ<br><font color=red>¿ì½İ¼ü£º Shift + C</font>')" onMouseOut="this.src=b6_delete1.src;unpoph()" onMouseDown="this.src=b6_delete3.src" onMouseUp="this.src=b6_delete2.src" onClick="option_delete()"></td>
+<td><img src="./gifs/buttons5/delete1.gif" border=0 onMouseOver="this.src=b6_delete2.src;poph('åˆ é™¤é€‰ä¸­çš„å±æ€§<br><font color=red>å¿«æ·é”®ï¼š Shift + C</font>')" onMouseOut="this.src=b6_delete1.src;unpoph()" onMouseDown="this.src=b6_delete3.src" onMouseUp="this.src=b6_delete2.src" onClick="option_delete()"></td>
 
-<td><img src="./gifs/buttons6/batch1.gif" border=0 onMouseOver="this.src=b6_batch2.src;poph('ÅúÁ¿Ìí¼Ó/ÒÆ³ıÊôĞÔ')" onMouseOut="this.src=b6_batch1.src;unpoph()" onMouseDown="this.src=b6_batch3.src" onMouseUp="this.src=b6_batch2.src" onClick="open_batsheet()"></td>
+<td><img src="./gifs/buttons6/batch1.gif" border=0 onMouseOver="this.src=b6_batch2.src;poph('æ‰¹é‡æ·»åŠ /ç§»é™¤å±æ€§')" onMouseOut="this.src=b6_batch1.src;unpoph()" onMouseDown="this.src=b6_batch3.src" onMouseUp="this.src=b6_batch2.src" onClick="open_batsheet()"></td>
 		</tr>
 	</table>
 </td></tr>
@@ -1426,34 +1448,36 @@ document.write(dum3);
 <BR>
 <BR>
 <BR>
-Äã×¼±¸ºÃÁËÂğ?<br>
-ÄãÊÇ·ñ¸Ğ¾õÒ»ÇĞË³Àû?<br>
-ÕâĞ©Êı¾İ½«±»´´½¨Îª
+ä½ å‡†å¤‡å¥½äº†å—?<br>
+ä½ æ˜¯å¦æ„Ÿè§‰ä¸€åˆ‡é¡ºåˆ©?<br>
+è¿™äº›æ•°æ®å°†è¢«åˆ›å»ºä¸º
 <script language="JavaScript1.2">
 <!--
 document.write((edit_mode == 0) ? "v1.10" : "v1.09");
 //-->
 </script>
-¸ñÊ½µÄ´æµµ¡£
+æ ¼å¼çš„å­˜æ¡£ã€‚
 <br><br>
 <form name="last_sheet" enctype="text/plain">
 <img src="./gifs/buttons2/create1.gif" border=0 onMouseOver="this.src=b2_create2.src" onMouseOut="this.src=b2_create1.src" onMouseDown="this.src=b2_create3.src" onMouseUp="this.src=b2_create2.src" onClick="create_data()"><BR>
-(<input type="checkbox" name="non_check" value=1 class=chkbx onMouseOver="poph('µ±Ñ¡ÖĞÊ±£¬Horadric ²»»á¼ì²âÊı¾İµÄÍêÕûĞÔ¡£ÎÒ²»ÖªµÀÄãÊÇ·ñÄÜÕı³£µÄÊ¹ÓÃÕâ¸öÈËÎï¡£')" onMouseOut="unpoph()">Çë²»ĞèÒªÎªÎÒµÄÈËÎï×ÊÁÏ×öÈÎºÎ¼ì²â¡£)<BR>
+(<input type="checkbox" name="non_check" value=1 class=chkbx onMouseOver="poph('å½“é€‰ä¸­æ—¶ï¼ŒHoradric ä¸ä¼šæ£€æµ‹æ•°æ®çš„å®Œæ•´æ€§ã€‚æˆ‘ä¸çŸ¥é“ä½ æ˜¯å¦èƒ½æ­£å¸¸çš„ä½¿ç”¨è¿™ä¸ªäººç‰©ã€‚')" onMouseOut="unpoph()">è¯·ä¸éœ€è¦ä¸ºæˆ‘çš„äººç‰©èµ„æ–™åšä»»ä½•æ£€æµ‹ã€‚)<BR>
+(<input type="checkbox" name="use_debug" value=1 class=chkbx onMouseOver="poph('å½“é€‰ä¸­æ—¶ï¼Œç”ŸæˆDOSä¸‹çš„DebugæŒ‡ä»¤æ‰¹å¤„ç†ï¼ˆWindows2003/XPæˆ–ä¹‹å‰ï¼‰ï¼Œå¦åˆ™è¯·ç”¨åå…­è¿›åˆ¶è½¯ä»¶å¤„ç†ã€‚')" onMouseOut="unpoph()">ç”Ÿæˆæ‰¹å¤„ç†ï¼Œå¦åˆ™ç²˜è´´è‡³WinHEXç±»è½¯ä»¶)<BR>
 <br>
 <table border=0>
 	<tr>
 		<td align=center><img src="./gifs/s_create/title.gif" border=0></td>
 	</tr>
 	<tr>
-		<td><textarea name="hex_answer"></textarea></td>
+		<td><textarea name="hex_answer" style="width:486px;"></textarea></td>
 	</tr>
 </table>
 <br>
-¿½±´ËùÓĞµÄÊ®Áù½øÖÆÊı¾İ²¢Õ³Ìùµ½ÄãµÄ<span style="color:red;">¼ÇÊÂ±¾</span>ÖĞ¡£<br>
-±£´æÎÄ¼şÎªÅú´¦ÀíÎÄ¼ş(*.bat)²¢Ë«»÷Ö´ĞĞ£¬Í¬Ä¿Â¼ÏÂ×Ô¶¯Éú³ÉÈËÎï´æµµ¡£<br>
+æ‹·è´æ‰€æœ‰åå…­è¿›åˆ¶æ•°æ®è‡³WinHEXï¼Œç²˜è´´ä¸º<span style="color:red;">"ASCII HEX"</span>æ ¼å¼ï¼Œä¿å­˜ä¸º"<span id="charname" style="color:red;">(äººç‰©è§’è‰²å).d2s"</span>ã€‚
+<br><br>
+å¦‚æœé€‰æ‹©äº†â€œç”Ÿæˆæ‰¹å¤„ç†â€ï¼Œè¦æ±‚ç³»ç»Ÿä¸ºWindows2003/XPæˆ–ä¹‹å‰ï¼ˆè‡ªå¸¦debug.exeï¼‰ï¼Œ<br>æ‹·è´æ‰€æœ‰çš„æ–‡å­—å¹¶ç²˜è´´åˆ°ä½ çš„<span style="color:red;">è®°äº‹æœ¬</span>ä¸­ï¼Œä¿å­˜æ–‡ä»¶ä¸ºæ‰¹å¤„ç†æ–‡ä»¶(*.bat)<br>å¹¶åŒå‡»æ‰§è¡Œï¼ŒåŒç›®å½•ä¸‹è‡ªåŠ¨ç”Ÿæˆäººç‰©å­˜æ¡£ã€‚<br>
 </form>
 <BR>
-<a href="./utility/cre_help.html" target="_blank">[ Ê²Ã´ÊÇ´´½¨? ]</a>
+<a href="./utility/cre_help.html" target="_blank">[ ä»€ä¹ˆæ˜¯åˆ›å»º? ]</a>
 </span>
 
 <!-- ================================================ //-->
@@ -1466,7 +1490,7 @@ document.write((edit_mode == 0) ? "v1.10" : "v1.09");
 <img src="./gifs/diablo_lod.gif" border=0><img src="./gifs/v110.gif" border=0><br>
 <br>
 <img src="./gifs/logo1.gif" border=0><br>
-°æ±¾ 
+ç‰ˆæœ¬ 
 <script language="JavaScript1.2">
 <!--
 document.write(ver_no);
@@ -1474,10 +1498,10 @@ document.write(ver_no);
 </script>
 <BR>
 <BR>
-Éè¼Æ£º<a href="mailto:chacha_vs@yahoo.co.jp">Chacha@Japan</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ºº»¯£º<a target=blank href=Tencent://Message/?Uin=272922032&Site=ÖĞ»ªÈËÃñ¹²ºÍ¹ú&Menu=yes  onMouseOver="poph('<center>QQ£º272922032</center>')" onMouseOut="unpoph()">ÌìÏÂÎÒ×î±¿</a>
+è®¾è®¡ï¼š<a href="mailto:chacha_vs@yahoo.co.jp">Chacha@Japan</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;æ±‰åŒ–ï¼š<a target=blank href=Tencent://Message/?Uin=272922032&Site=ä¸­åäººæ°‘å…±å’Œå›½&Menu=yes  onMouseOver="poph('<center>QQï¼š272922032</center>')" onMouseOut="unpoph()">å¤©ä¸‹æˆ‘æœ€ç¬¨</a>
 <BR>
 <img src="./gifs/chacha_mini.gif" border=0><BR><BR>
-±à¼­Ä£Ê½£º<select onChange='MM_jumpMenu(this)'>
+ç¼–è¾‘æ¨¡å¼ï¼š<select onChange='MM_jumpMenu(this)'>
 <script language="JavaScript1.2">
 <!--
 document.write("<option value='#9'");
@@ -1487,7 +1511,7 @@ document.write((edit_mode == 0) ? " selected>" : ">");
 document.write("v1.10</option>");
 function MM_jumpMenu(selObj){
   eval("document.location='"+selObj.options[selObj.selectedIndex].value+"'");
-  if(confirm("ÄúÊÇ·ñÒªÇå³ıËùÓĞµÄ×ÊÁÏ£¿")) {
+  if(confirm("æ‚¨æ˜¯å¦è¦æ¸…é™¤æ‰€æœ‰çš„èµ„æ–™ï¼Ÿ")) {
     window.location.reload();
   } else {
     var tmp_index=(selObj.selectedIndex+1)%2;
@@ -1499,13 +1523,13 @@ function MM_jumpMenu(selObj){
 </script></select>
 </td></tr></table>
 <BR>
-<input type="button" onClick="verchk()" value="¼ì²âĞÂ°æ±¾"><br>
+<input type="button" onClick="verchk()" value="æ£€æµ‹æ–°ç‰ˆæœ¬"><br>
 <br>
 <table boreder=0 cellspacing=1 cellpadding=0>
 	<form name="etc_form2">
 	<tr>
-		<td><input type="checkbox" name="h_winflg" value=1 class=chkbx checked onMouseOver="poph('¹´Ñ¡ºó¿ÉÒÔ¿´µ½°ïÖú´°¿Ú¡£')" onMouseOut="unpoph()"></td>
-		<td style="font-size:12px; font-family:'ËÎÌå'">°ïÖú´°¿Ú</td>
+		<td><input type="checkbox" name="h_winflg" value=1 class=chkbx checked onMouseOver="poph('å‹¾é€‰åå¯ä»¥çœ‹åˆ°å¸®åŠ©çª—å£ã€‚')" onMouseOut="unpoph()"></td>
+		<td style="font-size:12px; font-family:'å®‹ä½“'">å¸®åŠ©çª—å£</td>
 	</tr>
 	</form>
 </table>
