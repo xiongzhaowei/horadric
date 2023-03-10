@@ -1,6 +1,6 @@
 <!--// Programed by Chacha_die (Don't Change source code) // -->
 <html>
-    <title>D2X Editor Horadric</title>
+    <title>暗黑破坏神修改器Horadric</title>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <style type="text/css">
@@ -10,41 +10,34 @@
                 color: white;
                 font-size: 13px;
             }
-
             A:HOVER {
                 font-family: "宋体";
                 color: gold;
                 font-size: 13px;
                 cursor: crosshair;
             }
-
             BODY {
                 font-family: "宋体";
                 font-size: 13px;
                 color: white;
             }
-
             .go {
                 font-family: "宋体";
                 font-size: 13px;
             }
-
             .gy {
                 color: gray;
             }
-
             .rv {
                 color: white;
                 text-align: left;
             }
-
             .rv2 {
                 color: white;
                 background: #606060;
                 text-align: center;
                 width: 20px;
             }
-
             .menubox {
                 position: absolute;
                 padding: 1px;
@@ -56,7 +49,6 @@
                 left: 10;
                 z-index: 40
             }
-
             .mainbox {
                 position: absolute;
                 padding: 1px;
@@ -70,7 +62,6 @@
                 left: 10;
                 z-index: 2
             }
-
             .box1 {
                 position: absolute;
                 visibility: hidden;
@@ -84,7 +75,6 @@
                 z-index: 85;
                 background: url(./gifs/bg2.gif)
             }
-
             .box2 {
                 position: absolute;
                 visibility: hidden;
@@ -98,7 +88,6 @@
                 z-index: 80;
                 background: url(./gifs/bg2.gif)
             }
-
             .box3 {
                 position: absolute;
                 visibility: hidden;
@@ -112,7 +101,6 @@
                 z-index: 98;
                 background: url(./gifs/bg2.gif)
             }
-
             .box4 {
                 position: absolute;
                 visibility: hidden;
@@ -126,7 +114,6 @@
                 z-index: 70;
                 background: url(./gifs/bg2.gif)
             }
-
             .box5 {
                 position: absolute;
                 visibility: hidden;
@@ -140,7 +127,6 @@
                 z-index: 60;
                 background: url(./gifs/bg2.gif)
             }
-
             .boxh {
                 position: absolute;
                 visibility: hidden;
@@ -154,7 +140,6 @@
                 z-index: 99;
                 background: url(./gifs/bg2.gif)
             }
-
             .mat1 {
                 color: #909090;
                 cursor: crosshair;
@@ -162,7 +147,6 @@
                 width: 20px;
                 height: 20px;
             }
-
             .mat2 {
                 color: #909090;
                 cursor: crosshair;
@@ -170,7 +154,6 @@
                 background-repeat: no-repeat;
                 background-position: center center;
             }
-
             .matx {
                 border-collapse: collapse;
                 cellspacing=0 cellpadding=0}
@@ -286,7 +269,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <input type='file' style='width:480px;' onchange='importFile(this);'/>
+                                也可直接打开存档文件<input type='file' accept=".d2s" onchange='importFile(this);'/>
                             </td>
                         </tr>
                     </table>
@@ -334,22 +317,13 @@
                                                 //-->
                                             </script>
                                             <option value=0 selected>亚马逊
-				
                                             <option value=1>法师
-				
                                             <option value=2>死灵法师
-				
                                             <option value=3>圣骑士
-				
                                             <option value=4>野蛮人
-				
                                             <option value=5>德鲁依
-				
-                                            <option value=6>
-                                                刺客
-<script>
-                                                    <!--document.write('</select>');-->
-                                                </script>
+                                            <option value=6>刺客
+											<script><!--document.write('</select>');--></script>
                                         </td>
                                     </tr>
                                     <tr>
@@ -370,16 +344,10 @@
                                                 //-->
                                             </script>
                                             <option value=0 selected>无
-				
                                             <option value=1>杀手
-				
                                             <option value=2>冠军
-				
-                                            <option value=3>
-                                                族长
-<script>
-                                                    <!--document.write('</select>');-->
-                                                </script>
+                                            <option value=3>族长
+											<script><!--document.write('</select>');--></script>
                                         </td>
                                     </tr>
                                     <tr>
@@ -573,11 +541,8 @@
                             for (k = 0; k < all_skill_max; k++)
                                 dum0 += "<option value='-1'>无";
                             dum0 += "</select>";
-
                             dum1 = "<select name='skeyLR' class=pull" + (BOS_type ? (" style='width:" + (BOS_type == 1 ? "60px'" : "70px'")) : "") + "><option value=1 selected>左手<option value=0>右手";
-
                             dum2 = "";
-
                             for (i = 0; i < 10; i++) {
                                 dum2 += "<tr>";
                                 for (j = 0; j < 2; j++) {
@@ -616,9 +581,7 @@
                             for (i = 1; i < sk_max_lvl; i++)
                                 dum0 += "<option value=" + i + ">" + i;
                             dum0 += "</select></td>";
-
                             dum1 = "";
-
                             for (i = 1; i < 11; i++) {
                                 dum1 += "<tr>";
                                 for (j = 0; j < 3; j++) {
@@ -658,14 +621,12 @@
                                             <input type="checkbox" name="mercon" value=1 class=chkbx onMouseOver="poph('如果勾选，您将有佣兵以及他的装备。<br>*这个选项有可能不能正常运作，如果您目前没有佣兵，强烈建议您在勾选这一项前先在游戏里雇一名佣兵。')" onMouseOut="unpoph()" onChange="this.form.merc_exp.value = get_mercexp()">
                                             使用佣兵
 			&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="mercdie" value=1 class=chkbx onMouseOver="poph('如果勾选，在游戏开始时您的佣兵状态为死亡。')" onMouseOut="unpoph()">死亡
-		
                                         </td>
                                     </tr>
                                     <tr>
                                         <td width=140 align=center>
                                             <input type="radio" name="merc_select" value=0 class=radbt checked onChange="this.form.merc_exp.value = get_mercexp()">
                                             萝格浪人
-			
                                             <table border=1>
                                                 <tr>
                                                     <td width=90>
@@ -677,7 +638,6 @@
                                         <td width=140 align=center>
                                             <input type="radio" name="merc_select" value=1 class=radbt onChange="this.form.merc_exp.value = get_mercexp()">
                                             沙漠勇士
-			
                                             <table border=1>
                                                 <tr>
                                                     <td width=90>
@@ -689,7 +649,6 @@
                                         <td width=140 align=center>
                                             <input type="radio" name="merc_select" value=2 class=radbt onChange="this.form.merc_exp.value = get_mercexp()">
                                             铁狼
-			
                                             <table border=1>
                                                 <tr>
                                                     <td width=90>
@@ -701,7 +660,6 @@
                                         <td width=140 align=center>
                                             <input type="radio" name="merc_select" value=3 class=radbt onChange="this.form.merc_exp.value = get_mercexp()">
                                             野蛮人
-			
                                             <table border=1>
                                                 <tr>
                                                     <td width=90>
@@ -717,7 +675,6 @@
                                                 <!--
                                                 document.write('<select name="roguename" class=pull');
                                                 document.write(BOS_type ? ' style="width:' + (BOS_type == 1 ? '100px;">' : '100px;">') : '>');
-
                                                 for (i = 0; i < 41; i++)
                                                     document.write('<option value=' + i + '>' + rogue_name[i]);
                                                 document.write('</select>')
@@ -729,7 +686,6 @@
                                                 <!--
                                                 document.write('<select name="desertname" class=pull');
                                                 document.write(BOS_type ? ' style="width:' + (BOS_type == 1 ? '100px;">' : '80px;">') : '>');
-
                                                 for (i = 0; i < 21; i++)
                                                     document.write('<option value=' + i + '>' + desert_name[i]);
                                                 document.write('</select>');
@@ -741,7 +697,6 @@
                                                 <!--
                                                 document.write('<select name="eastname" class=pull');
                                                 document.write(BOS_type ? ' style="width:' + (BOS_type == 1 ? '100px;">' : '80px;">') : '>');
-
                                                 for (i = 0; i < 20; i++)
                                                     document.write('<option value=' + i + '>' + east_name[i]);
                                                 document.write('</select>');
@@ -753,7 +708,6 @@
                                                 <!--
                                                 document.write('<select name="barbname" class=pull');
                                                 document.write(BOS_type ? ' style="width:' + (BOS_type == 1 ? '100px;">' : '85px;">') : '>');
-
                                                 for (i = 0; i < 67; i++)
                                                     document.write('<option value=' + i + '>' + barb_name[i]);
                                                 document.write('</select>');
@@ -769,12 +723,8 @@
                                                 //-->
                                             </script>
                                             <option value=0 selected>火箭
-				
-                                            <option value=1>
-                                                冰箭
-<script>
-                                                    <!--document.write('</select>');-->
-                                                </script>
+                                            <option value=1>冰箭
+											<script><!--document.write('</select>');--></script>
                                         </td>
                                         <td align=center>
                                             <script language="JavaScript1.2">
@@ -784,14 +734,9 @@
                                                 //-->
                                             </script>
                                             <option value=0 selected>战斗
-				
                                             <option value=1>防御
-				
-                                            <option value=2>
-                                                攻击
-<script>
-                                                    <!--document.write('</select>');-->
-                                                </script>
+                                            <option value=2>攻击
+											<script><!--document.write('</select>');--></script>
                                         </td>
                                         <td align=center>
                                             <script language="JavaScript1.2">
@@ -801,14 +746,9 @@
                                                 //-->
                                             </script>
                                             <option value=0 selected>火系
-				
                                             <option value=1>冰系
-				
-                                            <option value=2>
-                                                电系
-<script>
-                                                    <!--document.write('</select>');-->
-                                                </script>
+                                            <option value=2>电系
+											<script><!--document.write('</select>');--></script>
                                         </td>
                                         <td></td>
                                     </tr>
@@ -836,14 +776,9 @@
                                                 //-->
                                             </script>
                                             <option value=0>普通
-				
                                             <option value=1>恶梦
-				
-                                            <option value=2 selected>
-                                                地狱
-<script>
-                                                    <!--document.write('</select>');-->
-                                                </script>
+                                            <option value=2 selected>地狱
+											<script><!--document.write('</select>');--></script>
                                         </td>
                                         <td align=center>生命</td>
                                         <td id="merc_life" width=50 align=center>0</td>
@@ -970,7 +905,6 @@
                                 dum9 = "";
                                 for (i = 0; i < 676; i++)
                                     dum9 += "<option>";
-
                                 document.write(dum9.substr(0, 8 * 384));
                                 //-->
                             </script>
@@ -1052,10 +986,8 @@
                                         <!--
                                         dum0 = ' onClick="itemlist_click(this.value)" style="' + width_btn + 'background:"#202020"; color:black;"></td>';
                                         dum1 = "";
-
                                         for (i = 1; i < 11; i++) {
                                             dum1 += '<tr><td width=20><input type="button" name="numm" value=' + i + dum0 + '<td width=65 align=center><font color=red><span id="itemlist_stat' + i + '"></span></font></td><td width=190><span id="itemlist_name' + i + '"></span></td><td width=65 align=center><span id="itemlist_qua' + i + '"></span></td><td width=185 align=center><span id="itemlist_soc' + i + '"></span></td><td width=100><span id="itemlist_store' + i + '"></span></td>';
-
                                             if (i == 1) {
                                                 dum1 += '<td><span style="cursor:crosshair;" onClick="item_up()"><img src="./gifs/arrow_up.gif"></span></td>';
                                             } else if (i == 10) {
@@ -1063,7 +995,6 @@
                                             } else {
                                                 dum1 += '<td></td>';
                                             }
-
                                             dum1 += '</tr>';
                                         }
                                         document.write(dum1);
@@ -1147,7 +1078,6 @@
                                         <!--
                                         document.write('<select name="skill_lvl" class=pull onChange="skill_level(this.selectedIndex)"');
                                         document.write(BOS_type ? ' style="width:' + (BOS_type == 1 ? '40px;">' : '40px;">') : '>');
-
                                         document.write('<option selected>0');
                                         if (edit_mode == 0) {
                                             dum = 63;
@@ -1193,12 +1123,9 @@
                                             //-->
                                         </script>
                                         <option>255
-				
                                         <option selected>1
-				
-                                        <option>
-                                            0
-<script language="JavaScript1.2">
+                                        <option>0
+										<script language="JavaScript1.2">
                                                 <!--
                                                 document.write('</select>');
                                                 document.write('<select name="skill_chg1" class=pull');
@@ -1206,14 +1133,9 @@
                                                 //-->
                                             </script>
                                         <option>255
-				
                                         <option>1
-				
-                                        <option selected>
-                                            0
-<script>
-                                                <!--document.write('</select>');-->
-                                            </script>
+                                        <option selected>0
+										<script><!--document.write('</select>');--></script>
                                     </nobr>
                                 </td>
                                 <td>
@@ -1232,10 +1154,7 @@
                             </tr>
                         </form>
                     </table>
-                    警告：部分“其他”类技可能无法正常工
-作，它们是在 1.09 版本中制作的。在 
-1.10 里，某些技能可能使游戏异常终止。
-
+                    警告：部分“其他”类技可能无法正常工作，它们是在 1.09 版本中制作的。在1.10 里，某些技能可能使游戏异常终止。
                 </center>
             </div>
             <!-- =================== Import & Export window =================== //-->
@@ -1266,12 +1185,8 @@
                                     //-->
                                 </script>
                                 <option selected>v1.10装备
-	
-                                <option>
-                                    v1.09装备
-<script>
-                                        <!--document.write('</select>');-->
-                                    </script>
+                                <option>v1.09装备
+								<script><!--document.write('</select>');--></script>
                             </td>
                         </tr>
                     </form>
@@ -1450,7 +1365,6 @@
                     <select name="bat_type" class=pull style="width:80px" onChange="change_bat_type(this.selectedIndex)">
                         <option selected>添加
                         <option>移除
-
                     </select>
                     <br>
                     <input type="text" name="bat_att" value=0 style="width:40px" onClick="magic_select_on(99)" onChange="change_bat_att(this.value)">
@@ -1469,45 +1383,26 @@
                     <br>
                     <select name="bat_item" class=pull style="width:100px">
                         <option selected>所有护身符
-	
                         <option>Pic0护身符
-	
                         <option>Pic1护身符
-	
                         <option>Pic2护身符
-	
                         <option>所有珠宝
-	
                         <option>Pic0珠宝
-	
                         <option>Pic1珠宝
-	
                         <option>Pic2珠宝
-	
                         <option>Pic3珠宝
-	
                         <option>Pic4珠宝
-	
                         <option>Pic5珠宝
-	
                         <option>所有物品
-
                     </select>
                     <select name="bat_place" class=pull style="width:140px">
                         <option selected>背包
-	
                         <option>装备
-	
                         <option>方块
-	
                         <option>箱子
-	
                         <option>佣兵装备
-	
                         <option>招唤生物装备
-	
                         <option>当前所在
-
                     </select>
                     <br>
                     <br>
@@ -1863,195 +1758,186 @@
                                                 //-->
                                             </script>
                                             <option value=1>白色低级
-					
                                             <option value=2>白色普通
-					
                                             <option value=3>白色高级
-					
                                             <option value=4>蓝色
-					
                                             <option value=5>套装
-					
                                             <option value=6>黄色
-					
                                             <option value=7>暗金
-					
                                             <option value=8>橙色
-				
-</select>&nbsp;
-<span id="pick_eth_hid" style="visibility:hidden">
-    <input type="checkbox" name="pick_eth" value=1 class=chkbx onChange="item_ethereal[this.form.pick_no.value]=this.checked">无形
-				
+											</select><!-- 为什么这里不能用脚本写？！！ -->
+                                                <span id="pick_eth_hid" style="visibility:hidden">
+                                                    <input type="checkbox" name="pick_eth" value=1 class=chkbx onChange="item_ethereal[this.form.pick_no.value]=this.checked">无形
+                                                </span>
+                                                <script language="JavaScript1.2">
+                                                    <!--
+                                                    document.write('<select name="pick_pic" class=pull onChange="item_pictype_change()" style="visibility:hidden;');
+                                                    document.write(BOS_type ? ' width:' + (BOS_type == 1 ? '75px">' : '75px">') : '">');
+                                                    //-->
+                                                </script>
+                                            <option value=0>图片 0
+                                            <option value=1>图片 1
+                                            <option value=2>图片 2
+                                            <option value=3>图片 3
+                                            <option value=4>图片 4
+                                            <option value=5>图片 5
+                                            <option value=6>图片 6
+                                            <option value=7>图片 7
+											<script><!--document.write('</select>');--></script>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <img src="./gifs/s_item/sockets.gif" border=0>
+                                        </td>
+                                        <td colspan=3>
+                                            <input type="checkbox" name="pick_soc" value=1 onChange="item_socket_change();this.focus();" class=chkbx style="visibility:hidden">
+                                            <span id="pick_soc_hid" style="visibility:hidden">
+                                                <span id="pick_soced"></span>
+                                                <span id="pick_socno1"></span>
+                                                <span id="pick_socno2"></span>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <img src="./gifs/s_item/damage1.gif" border=0>
+                                        </td>
+                                        <td width=50>
+                                            <span id="pick_dam1" style="visibility:hidden"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <img src="./gifs/s_item/durability.gif" border=0>
+                                        </td>
+                                        <td align=center>
+                                            <span id="pick_dur_hid" style="visibility:hidden">
+                                                <span id="pick_dur0"></span>
+                                                <span id="pick_dur1"></span>
+                                            </span>
+                                        </td>
+                                        <td colspan=2>
+                                            <input type="button" name="pick_indest" value="Indestructible" onClick="item_dur_change()" style="visibility:hidden">
+                                        </td>
+                                        <td>
+                                            <img src="./gifs/s_item/damage2.gif" border=0>
+                                        </td>
+                                        <td>
+                                            <span id="pick_dam2" style="visibility:hidden"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <img src="./gifs/s_item/quantity.gif" border=0>
+                                        </td>
+                                        <script language="JavaScript1.2">
+                                            <!--
+                                            document.write('<td><input type="text" size=' + (BOS_type == 1 ? '3' : '4') + ' name="pick_quan" value="" style="visibility:hidden" onChange="item_quantity_change()"></td>');
+                                            //-->
+                                        </script>
+                                        <td>
+                                            <img src="./gifs/s_item/defence.gif" border=0>
+                                        </td>
+                                        <script language="JavaScript1.2">
+                                            <!--
+                                            document.write('<td><input type="text" size=' + (BOS_type == 1 ? '3' : '4') + ' name="pick_def" value="" style="visibility:hidden" onChange="item_defence_change()"></td>');
+                                            //-->
+                                        </script>
+                                        <td>
+                                            <img src="./gifs/s_item/throw.gif" border=0>
+                                        </td>
+                                        <td>
+                                            <span id="pick_damT" style="visibility:hidden"></span>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <table border=0 cellspacing=0 cellpadding=0 width=340>
+                                    <tr>
+                                        <td>
+                                            <img src="./gifs/buttons5/pickup1.gif" border=0 onMouseOver="this.src=b5_pickup2.src;poph('选中物品来移动、修改类型或删除。<br><font color=red>快捷方式：鼠标双击</font>')" onMouseOut="this.src=b5_pickup1.src;unpoph()" onMouseDown="this.src=b5_pickup3.src" onMouseUp="this.src=b5_pickup2.src" onClick="item_pickup()" id="item_pick">
+                                        </td>
+                                        <td>
+                                            <img src="./gifs/buttons5/create1.gif" border=0 onMouseOver="this.src=b5_create2.src;poph('创建新物品<br><font color=red>快捷键： Shift + A</font>')" onMouseOut="this.src=b5_create1.src;unpoph()" onMouseDown="this.src=b5_create3.src" onMouseUp="this.src=b5_create2.src" onClick="item_create()" id="item_cre">
+                                        </td>
+                                        <td>
+                                            <img src="./gifs/buttons5/copy1.gif" border=0 onMouseOver="this.src=b5_copy2.src;poph('复制选中的物品<br><font color=red>快捷键： Shift + S</font>')" onMouseOut="this.src=b5_copy1.src;unpoph()" onMouseDown="this.src=b5_copy3.src" onMouseUp="this.src=b5_copy2.src" onClick="item_copy()" id="item_copyy">
+                                        </td>
+                                        <td>
+                                            <img src="./gifs/buttons5/delete1.gif" border=0 onMouseOver="this.src=b5_delete2.src;poph('删除选中的物品<br><font color=red>快捷键： Shift + D</font>')" onMouseOut="this.src=b5_delete1.src;unpoph()" onMouseDown="this.src=b5_delete3.src" onMouseUp="this.src=b5_delete2.src" onClick="item_delete()">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <img src="./gifs/buttons5/list1.gif" border=0 onMouseOver="this.src=b5_list2.src;poph('显示您的物品，包括删除掉的物品。')" onMouseOut="this.src=b5_list1.src;unpoph()" onMouseDown="this.src=b5_list3.src" onMouseUp="this.src=b5_list2.src" onClick="itemlist_open()">
+                                        </td>
+                                        <td>
+                                            <img src="./gifs/buttons5/import1.gif" border=0 onMouseOver="this.src=b5_import2.src;poph('从d2i文件输入物品资料')" onMouseOut="this.src=b5_import1.src;unpoph()" onMouseDown="this.src=b5_import3.src" onMouseUp="this.src=b5_import2.src" onClick="item_import()">
+                                        </td>
+                                        <td>
+                                            <img src="./gifs/buttons5/export1.gif" border=0 onMouseOver="this.src=b5_export2.src;poph('用Jamella相容格式输出物品资料')" onMouseOut="this.src=b5_export1.src;unpoph()" onMouseDown="this.src=b5_export3.src" onMouseUp="this.src=b5_export2.src" onClick="item_export(1)">
+                                        </td>
+                                        <td>
+                                            <img src="./gifs/buttons5/reminder1.gif" border=0 onMouseOver="this.src=b5_reminder2.src;poph('您可以利用Cookie方便的读写物品资料')" onMouseOut="this.src=b5_reminder1.src;unpoph()" onMouseDown="this.src=b5_reminder3.src" onMouseUp="this.src=b5_reminder2.src" onClick="remind_open()">
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align=center style="background:url(./gifs/s_item/title2.gif)" width=340>
+                                <table border=0 cellspacing=0 cellpadding=0 width=340 height=19>
+                                    <tr>
+                                        <td width=320>
+                                            <font style='background-color:#000000; font-size:12px; color:#FFFFFF; font-family:"宋体"'>&nbsp;代码&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;属 性 列 表&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;值&nbsp;&nbsp;</font>
+                                        </td>
+                                        <td width=20 id="opt_page" align=center></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div style="border:0px gray solid; padding:0px; width:340px; height:200px; overflow:auto; z-index:0;">
+                                    <table border=0 cellspacing=0 cellpadding=0 width=323>
+                                        <script language="JavaScript1.2">
+                                            <!--
+                                            dum0 = BOS_type == 0 ? '28' : '30';
+                                            dum1 = BOS_type == 0 ? '221' : '223';
+                                            dum2 = BOS_type == 0 ? '68' : '70';
+                                            dum3 = "";
+                                            for (i = 0; i < M_optsheet; i++) {
+                                                dum3 += '<tr><td><input type="text" name="opt_no" value="" style="width:' + dum0 + 'px; border-width:1px" onChange="optname_write(' + i + ', this.value)" onClick="magic_select_on(' + i + ')"></td><td><input type="text" name="opt_name" value="" style="width:' + dum1 + 'px; border-width:1px" onClick="this.blur(); opt_name_sel(' + i + ')" onDblClick="this.blur()" onFocus="this.blur()" onSelect="this.blur()"></td><td><input type="text" name="opt_val" value="" style="width:' + dum2 + 'px; border-width:1px" onClick="opt_val_clk(' + i + ')" onBlur="opt_valuein(' + i + ')"></td></tr>';
+                                            }
+                                            document.write(dum3);
+                                            //-->
+                                        </script>
+                                    </table>
+                                </div>
+                                <input type="hidden" name="opt_focus" value=0>
+                                <input type="hidden" name="item_is_picked" value=0>
+                                <table border=0 cellspacing=0 cellpadding=0 width=340>
+                                    <tr>
+                                        <td>
+                                            <img src="./gifs/buttons6/up1.gif" border=0 onMouseOver="this.src=b6_up2.src;poph('属性重新排序<br><font color=red>快捷键： Shift + Z</font>')" onMouseOut="this.src=b6_up1.src;unpoph()" onMouseDown="this.src=b6_up3.src" onMouseUp="this.src=b6_up2.src" onClick="option_up()">
+                                        </td>
+                                        <td>
+                                            <img src="./gifs/buttons6/down1.gif" border=0 onMouseOver="this.src=b6_down2.src;poph('属性重新排序<br><font color=red>快捷键： Shift + X</font>')" onMouseOut="this.src=b6_down1.src;unpoph()" onMouseDown="this.src=b6_down3.src" onMouseUp="this.src=b6_down2.src" onClick="option_down()">
+                                        </td>
+                                        <td>
+                                            <img src="./gifs/buttons5/delete1.gif" border=0 onMouseOver="this.src=b6_delete2.src;poph('删除选中的属性<br><font color=red>快捷键： Shift + C</font>')" onMouseOut="this.src=b6_delete1.src;unpoph()" onMouseDown="this.src=b6_delete3.src" onMouseUp="this.src=b6_delete2.src" onClick="option_delete()">
+                                        </td>
+                                        <td>
+                                            <img src="./gifs/buttons6/batch1.gif" border=0 onMouseOver="this.src=b6_batch2.src;poph('批量添加/移除属性')" onMouseOut="this.src=b6_batch1.src;unpoph()" onMouseDown="this.src=b6_batch3.src" onMouseUp="this.src=b6_batch2.src" onClick="open_batsheet()">
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </td>
+        </tr>
+    </table>
 </span>
-&nbsp;&nbsp;<script language="JavaScript1.2">
-    <!--
-    document.write('<select name="pick_pic" class=pull onChange="item_pictype_change()" style="visibility:hidden;');
-    document.write(BOS_type ? ' width:' + (BOS_type == 1 ? '75px">' : '75px">') : '">');
-    //-->
-</script>
-<option value=0>图片 0
-					
-<option value=1>图片 1
-					
-<option value=2>图片 2
-					
-<option value=3>图片 3
-					
-<option value=4>图片 4
-					
-<option value=5>图片 5
-					
-<option value=6>图片 6
-					
-<option value=7>图片 7
-				
-</select></td></tr>
-<tr>
-    <td>
-        <img src="./gifs/s_item/sockets.gif" border=0>
-    </td>
-    <td colspan=3>
-        <input type="checkbox" name="pick_soc" value=1 onChange="item_socket_change();this.focus();" class=chkbx style="visibility:hidden">
-        <span id="pick_soc_hid" style="visibility:hidden">
-            <span id="pick_soced"></span>
-            <span id="pick_socno1"></span>
-            <span id="pick_socno2"></span>
-        </span>
-    </td>
-    <td>
-        <img src="./gifs/s_item/damage1.gif" border=0>
-    </td>
-    <td width=50>
-        <span id="pick_dam1" style="visibility:hidden"></span>
-    </td>
-</tr>
-<tr>
-    <td>
-        <img src="./gifs/s_item/durability.gif" border=0>
-    </td>
-    <td align=center>
-        <span id="pick_dur_hid" style="visibility:hidden">
-            <span id="pick_dur0"></span>
-            <span id="pick_dur1"></span>
-        </span>
-    </td>
-    <td colspan=2>
-        <input type="button" name="pick_indest" value="Indestructible" onClick="item_dur_change()" style="visibility:hidden">
-    </td>
-    <td>
-        <img src="./gifs/s_item/damage2.gif" border=0>
-    </td>
-    <td>
-        <span id="pick_dam2" style="visibility:hidden"></span>
-    </td>
-</tr>
-<tr>
-    <td>
-        <img src="./gifs/s_item/quantity.gif" border=0>
-    </td>
-    <script language="JavaScript1.2">
-        <!--
-        document.write('<td><input type="text" size=' + (BOS_type == 1 ? '3' : '4') + ' name="pick_quan" value="" style="visibility:hidden" onChange="item_quantity_change()"></td>');
-        //-->
-    </script>
-    <td>
-        <img src="./gifs/s_item/defence.gif" border=0>
-    </td>
-    <script language="JavaScript1.2">
-        <!--
-        document.write('<td><input type="text" size=' + (BOS_type == 1 ? '3' : '4') + ' name="pick_def" value="" style="visibility:hidden" onChange="item_defence_change()"></td>');
-        //-->
-    </script>
-    <td>
-        <img src="./gifs/s_item/throw.gif" border=0>
-    </td>
-    <td>
-        <span id="pick_damT" style="visibility:hidden"></span>
-    </td>
-</tr>
-</table>
-<table border=0 cellspacing=0 cellpadding=0 width=340>
-    <tr>
-        <td>
-            <img src="./gifs/buttons5/pickup1.gif" border=0 onMouseOver="this.src=b5_pickup2.src;poph('选中物品来移动、修改类型或删除。<br><font color=red>快捷方式：鼠标双击</font>')" onMouseOut="this.src=b5_pickup1.src;unpoph()" onMouseDown="this.src=b5_pickup3.src" onMouseUp="this.src=b5_pickup2.src" onClick="item_pickup()" id="item_pick">
-        </td>
-        <td>
-            <img src="./gifs/buttons5/create1.gif" border=0 onMouseOver="this.src=b5_create2.src;poph('创建新物品<br><font color=red>快捷键： Shift + A</font>')" onMouseOut="this.src=b5_create1.src;unpoph()" onMouseDown="this.src=b5_create3.src" onMouseUp="this.src=b5_create2.src" onClick="item_create()" id="item_cre">
-        </td>
-        <td>
-            <img src="./gifs/buttons5/copy1.gif" border=0 onMouseOver="this.src=b5_copy2.src;poph('复制选中的物品<br><font color=red>快捷键： Shift + S</font>')" onMouseOut="this.src=b5_copy1.src;unpoph()" onMouseDown="this.src=b5_copy3.src" onMouseUp="this.src=b5_copy2.src" onClick="item_copy()" id="item_copyy">
-        </td>
-        <td>
-            <img src="./gifs/buttons5/delete1.gif" border=0 onMouseOver="this.src=b5_delete2.src;poph('删除选中的物品<br><font color=red>快捷键： Shift + D</font>')" onMouseOut="this.src=b5_delete1.src;unpoph()" onMouseDown="this.src=b5_delete3.src" onMouseUp="this.src=b5_delete2.src" onClick="item_delete()">
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <img src="./gifs/buttons5/list1.gif" border=0 onMouseOver="this.src=b5_list2.src;poph('显示您的物品，包括删除掉的物品。')" onMouseOut="this.src=b5_list1.src;unpoph()" onMouseDown="this.src=b5_list3.src" onMouseUp="this.src=b5_list2.src" onClick="itemlist_open()">
-        </td>
-        <td>
-            <img src="./gifs/buttons5/import1.gif" border=0 onMouseOver="this.src=b5_import2.src;poph('从d2i文件输入物品资料')" onMouseOut="this.src=b5_import1.src;unpoph()" onMouseDown="this.src=b5_import3.src" onMouseUp="this.src=b5_import2.src" onClick="item_import()">
-        </td>
-        <td>
-            <img src="./gifs/buttons5/export1.gif" border=0 onMouseOver="this.src=b5_export2.src;poph('用Jamella相容格式输出物品资料')" onMouseOut="this.src=b5_export1.src;unpoph()" onMouseDown="this.src=b5_export3.src" onMouseUp="this.src=b5_export2.src" onClick="item_export(1)">
-        </td>
-        <td>
-            <img src="./gifs/buttons5/reminder1.gif" border=0 onMouseOver="this.src=b5_reminder2.src;poph('您可以利用Cookie方便的读写物品资料')" onMouseOut="this.src=b5_reminder1.src;unpoph()" onMouseDown="this.src=b5_reminder3.src" onMouseUp="this.src=b5_reminder2.src" onClick="remind_open()">
-        </td>
-    </tr>
-</table>
-</td></tr>
-<tr>
-    <td align=center style="background:url(./gifs/s_item/title2.gif)" width=340>
-        <table border=0 cellspacing=0 cellpadding=0 width=340 height=19>
-            <tr>
-                <td width=320>
-                    <font style='background-color:#000000; font-size:12px; color:#FFFFFF; font-family:"宋体"'>&nbsp;代码&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;属 性 列 表&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;值&nbsp;&nbsp;</font>
-                </td>
-                <td width=20 id="opt_page" align=center></td>
-            </tr>
-        </table>
-    </td>
-</tr>
-<tr>
-    <td>
-        <div style="border:0px gray solid; padding:0px; width:340px; height:200px; overflow:auto; z-index:0;">
-            <table border=0 cellspacing=0 cellpadding=0 width=323>
-                <script language="JavaScript1.2">
-                    <!--
-                    dum0 = BOS_type == 0 ? '28' : '30';
-                    dum1 = BOS_type == 0 ? '221' : '223';
-                    dum2 = BOS_type == 0 ? '68' : '70';
-                    dum3 = "";
-                    for (i = 0; i < M_optsheet; i++) {
-                        dum3 += '<tr><td><input type="text" name="opt_no" value="" style="width:' + dum0 + 'px; border-width:1px" onChange="optname_write(' + i + ', this.value)" onClick="magic_select_on(' + i + ')"></td><td><input type="text" name="opt_name" value="" style="width:' + dum1 + 'px; border-width:1px" onClick="this.blur(); opt_name_sel(' + i + ')" onDblClick="this.blur()" onFocus="this.blur()" onSelect="this.blur()"></td><td><input type="text" name="opt_val" value="" style="width:' + dum2 + 'px; border-width:1px" onClick="opt_val_clk(' + i + ')" onBlur="opt_valuein(' + i + ')"></td></tr>';
-                    }
-                    document.write(dum3);
-                    //-->
-                </script>
-            </table>
-        </div>
-        <input type="hidden" name="opt_focus" value=0>
-        <input type="hidden" name="item_is_picked" value=0>
-        <table border=0 cellspacing=0 cellpadding=0 width=340>
-            <tr>
-                <td>
-                    <img src="./gifs/buttons6/up1.gif" border=0 onMouseOver="this.src=b6_up2.src;poph('属性重新排序<br><font color=red>快捷键： Shift + Z</font>')" onMouseOut="this.src=b6_up1.src;unpoph()" onMouseDown="this.src=b6_up3.src" onMouseUp="this.src=b6_up2.src" onClick="option_up()">
-                </td>
-                <td>
-                    <img src="./gifs/buttons6/down1.gif" border=0 onMouseOver="this.src=b6_down2.src;poph('属性重新排序<br><font color=red>快捷键： Shift + X</font>')" onMouseOut="this.src=b6_down1.src;unpoph()" onMouseDown="this.src=b6_down3.src" onMouseUp="this.src=b6_down2.src" onClick="option_down()">
-                </td>
-                <td>
-                    <img src="./gifs/buttons5/delete1.gif" border=0 onMouseOver="this.src=b6_delete2.src;poph('删除选中的属性<br><font color=red>快捷键： Shift + C</font>')" onMouseOut="this.src=b6_delete1.src;unpoph()" onMouseDown="this.src=b6_delete3.src" onMouseUp="this.src=b6_delete2.src" onClick="option_delete()">
-                </td>
-                <td>
-                    <img src="./gifs/buttons6/batch1.gif" border=0 onMouseOver="this.src=b6_batch2.src;poph('批量添加/移除属性')" onMouseOut="this.src=b6_batch1.src;unpoph()" onMouseDown="this.src=b6_batch3.src" onMouseUp="this.src=b6_batch2.src" onClick="open_batsheet()">
-                </td>
-            </tr>
-        </table>
-    </td>
-</tr>
-</table></form></td></tr></table></span>
 <!--<script language="JavaScript1.2">alert("5");</script>//-->
 <!-- ============================================================= //-->
 <!-- =================== Create Character Data =================== //-->
