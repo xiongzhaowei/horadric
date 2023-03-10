@@ -377,10 +377,10 @@ function importing()
 	data_length = hex_data0.length;
 
 	if(item_cnt > 0){
-		alert('在汇入前请先清除所有的资料(点击"清除所有"按钮重载页面)。');
+		alert('在导入前请先清除所有的资料(点击"清除所有"按钮重载页面)。');
 	}
 	else if(data_length < 800){
-		alert("请先将存档数据粘贴到文字框内再按汇入.");
+		alert("请先将存档数据粘贴到文字框内再按导入.");
 	}
 	else{
 		all_reset();
@@ -391,7 +391,7 @@ function importing()
 		get_item();
 		get_shortcut();
 		arcal();
-		alert("=== 存档汇入成功 ===\n\nData version : " + ((impo_mode == 0) ? "v1.10" : "v1.09") + "\nEdit as : " + ((edit_mode == 0) ? "v1.10" : "v1.09"));
+		alert("=== 存档导入成功 ===\n\nData version : " + ((impo_mode == 0) ? "v1.10" : "v1.09") + "\nEdit as : " + ((edit_mode == 0) ? "v1.10" : "v1.09"));
 	}
 }
 
@@ -2472,7 +2472,7 @@ function item_delete()
 function item_import()
 {
 	if((document.focus_sheet.item_is_picked.value * 1) == 1){
-		alert("汇入前请先放下取下的物品");
+		alert("导入前请先放下取下的物品");
 		return;
 	}
 
@@ -2480,7 +2480,7 @@ function item_import()
 	document.inex_sheet.inex_data_file.value = "";
 	document.getElementById("inex_title").src = title_import.src;
 	document.getElementById("inex_message").innerHTML = "";
-	document.getElementById("inex_message").innerHTML = '确认物品版本<br>然后黏贴物品的Hex资料 (ex. from d2i file "4A 4D...")<br>点选关闭按钮<br>警告：汇入错误的资料可能导致该人物无法使用！';
+	document.getElementById("inex_message").innerHTML = '确认物品版本<br>然后黏贴物品的Hex资料 (ex. from d2i file "4A 4D...")<br>点选关闭按钮<br>警告：导入错误的资料可能导致该人物无法使用！';
 
 	document.inex_sheet.inex_select.style.visibility = "visible";
 	document.inex_sheet.inex_data_file.style.visibility = "visible";
@@ -2492,7 +2492,7 @@ function item_import()
 function item_import_main(import_item_data)
 {
 	if((document.focus_sheet.item_is_picked.value * 1) == 1){
-		alert("汇入前请先放下取下的物品");
+		alert("导入前请先放下取下的物品");
 		return;
 	}
 
