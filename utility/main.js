@@ -4,7 +4,7 @@ if((edit_mode != 0) && (edit_mode != 9)) alert('"preference.js" was broken.\nYou
 //################## Initialize ##################
 impo_mode = 9;	//0:v1.10  9:v1.09
 //var RUNEBEGIN = 645; //带神符之语标志的装备开始编号。
-var VERSION = "Build20080830"
+var VERSION = "Build20230312"
 
 var hex_str = "0123456789ABCDEF";
 rev_bit = new Array("0000","1000","0100","1100","0010","1010","0110","1110","0001","1001","0101","1101","0011","1011","0111","1111");
@@ -4763,40 +4763,35 @@ function create_data()
 
 //file size
 	hex_dum = hex_head + hex_ans0 + hex_ans1 + hex_ans2;
-
 	hex_size = hex_dum.length / 2 + 8;
 
 //check sum
 	hex_dum = hex_head + dec_hex(hex_size,4) + "00000000" + hex_ans0 + hex_ans1 + hex_ans2;
-
 	hex_chksum = checksum(hex_dum);
-
 	hex_dum = hex_head + dec_hex(hex_size,4) + dec_hex(hex_chksum,4) + hex_ans0 + hex_ans1 + hex_ans2;
-
 	hex_dum = hex_dum.toUpperCase();
-
 	hex_ans = "";
-
+	saveName= document.stats_sheet.chr_name.value + ".d2s";
 	if(document.last_sheet.use_debug.checked){
 		//GenerateHEXdata(hex_ans);
-		hex_dum = hex_dum.toUpperCase();
 		var filesize = hex_dum.length / 2;
 		for(i = 0; i < hex_dum.length; i+=2) hex_ans += String.fromCharCode(32) + hex_dum.substr(i,2);
 		for(hex_dum = "",i = 0; i*48 < hex_ans.length; i++) hex_dum += "e" + tohex(i+16,16) + "0" + hex_ans.substr(i*48,48) + String.fromCharCode(13);
-		hex_dum += "rcx" + String.fromCharCode(13) + tohex(filesize,16) + String.fromCharCode(13) + "n" + document.stats_sheet.chr_name.value + ".d2s" + String.fromCharCode(13) + "w" + String.fromCharCode(13) + "q" + String.fromCharCode(13) + ":begin" + String.fromCharCode(13) + "debug<%0>nul" + String.fromCharCode(13);
+		hex_dum += "rcx" + String.fromCharCode(13) + tohex(filesize,16) + String.fromCharCode(13) + "n" + saveName + String.fromCharCode(13) + "w" + String.fromCharCode(13) + "q" + String.fromCharCode(13) + ":begin" + String.fromCharCode(13) + "debug<%0>nul" + String.fromCharCode(13);
 		hex_dum = ";@echo off" + String.fromCharCode(13) + ";goto begin" + String.fromCharCode(13) + hex_dum;
 		document.last_sheet.hex_answer.value = hex_dum;
 	}
 	else{
-		//WriteBatchFile(hex_ans);
+		//WriteBatchFile(hex_ans);加换行
 		for(i = 0; i < hex_dum.length; i+=64) hex_ans += hex_dum.substr(i,64) + String.fromCharCode(13);
-		document.last_sheet.hex_answer.value = hex_ans.toUpperCase();	
+		document.last_sheet.hex_answer.value = hex_ans;
+		saveD2s(hex_dum,saveName);
 	}
-		alert("=== 存档建立成功！ ===" + tohex(256,16));
-		document.getElementById("charname").innerHTML = document.stats_sheet.chr_name.value+".d2s";
-		document.last_sheet.hex_answer.focus();
-		document.last_sheet.hex_answer.select();
-	}
+	document.getElementById("charname").innerHTML = saveName;
+	document.last_sheet.hex_answer.focus();
+	document.last_sheet.hex_answer.select();
+	alert("=== 存档建立成功！ ===");	// + tohex(256,16));删除
+}
 
 function tohex(num,bit)
 {
