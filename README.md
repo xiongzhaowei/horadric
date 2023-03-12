@@ -11,8 +11,10 @@ https://github.com/xiongzhaowei/horadric
 
 user.qzone.qq.com/272922032/blog/1218623539
 
-# 更新20220309：
+# 更新202203：
 
 支持加载.d2s文件至现代浏览器（原汉化版本需要旧IE的VBS支持及Windows2003或更早包含debug.exe的版本），
 
-可导出为两种可选格式（汉化作者debug脚本及原作者ASCII HEX）
+可导出为两种可选格式（汉化作者debug脚本及原作者ASCII HEX），
+
+可直接下载.d2s文件，无需WinHEX(现代浏览器支持HTML5/ES6)。
