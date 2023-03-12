@@ -1,0 +1,156 @@
+@charset "GB2312";
+A {
+text-decoration: none;
+font-family: "宋体";
+color: white;
+font-size: 13px;
+}
+A:HOVER {
+font-family: "宋体";
+color: gold;
+font-size: 13px;
+cursor: crosshair;
+}
+BODY {
+font-family: "宋体";
+font-size: 13px;
+color: white;
+}
+.go {
+font-family: "宋体";
+font-size: 13px;
+}
+.gy {
+color: gray;
+}
+.rv {
+color: white;
+text-align: left;
+}
+.rv2 {
+color: white;
+background: #606060;
+text-align: center;
+width: 20px;
+}
+.menubox {
+position: absolute;
+padding: 1px;
+width: 670px;
+overflow: visible;
+font-family: "宋体";
+font-size: 13px;
+top: 0;
+left: 10;
+z-index: 40
+}
+.mainbox {
+position: absolute;
+padding: 1px;
+width: 670px;
+height: 410px;
+overflow: visible;
+font-family: "宋体";
+font-size: 13px;
+color: white;
+top: -500;
+left: 10;
+z-index: 2
+}
+.box1 {
+position: absolute;
+visibility: hidden;
+border: 2px gray solid;
+padding: 5px;
+width: 220px;
+overflow: visible;
+font-family: "宋体";
+font-size: 13px;
+color: white;
+z-index: 85;
+background: url(./gifs/bg2.gif)
+}
+.box2 {
+position: absolute;
+visibility: hidden;
+border: 2px gray solid;
+padding: 5px;
+width: 250px;
+overflow: visible;
+font-family: "宋体";
+font-size: 13px;
+color: white;
+z-index: 80;
+background: url(./gifs/bg2.gif)
+}
+.box3 {
+position: absolute;
+visibility: hidden;
+border: 2px gray solid;
+padding: 5px;
+width: 650px;
+overflow: visible;
+font-family: "宋体";
+font-size: 13px;
+color: white;
+z-index: 98;
+background: url(./gifs/bg2.gif)
+}
+.box4 {
+position: absolute;
+visibility: hidden;
+border: 2px gray solid;
+padding: 5px;
+width: 260px;
+overflow: visible;
+font-family: "宋体";
+font-size: 13px;
+color: white;
+z-index: 70;
+background: url(./gifs/bg2.gif)
+}
+.box5 {
+position: absolute;
+visibility: hidden;
+border: 2px gray solid;
+padding: 5px;
+width: 500px;
+overflow: visible;
+font-family: "宋体";
+font-size: 13px;
+color: white;
+z-index: 60;
+background: url(./gifs/bg2.gif)
+}
+.boxh {
+position: absolute;
+visibility: hidden;
+border: 2px gray solid;
+padding: 3px;
+width: 140px;
+overflow: visible;
+font-family: "宋体";
+font-size: 13px;
+color: white;
+z-index: 99;
+background: url(./gifs/bg2.gif)
+}
+.mat1 {
+color: #909090;
+cursor: crosshair;
+font-size: 1px;
+width: 20px;
+height: 20px;
+}
+.mat2 {
+color: #909090;
+cursor: crosshair;
+font-size: 1px;
+background-repeat: no-repeat;
+background-position: center center;
+}
+.matx {
+border-collapse: collapse;
+cellspacing=0;
+cellpadding=0;
+}
