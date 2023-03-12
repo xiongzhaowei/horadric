@@ -3,161 +3,7 @@
     <title>暗黑破坏神修改器Horadric</title>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <style type="text/css">
-            A {
-                text-decoration: none;
-                font-family: "宋体";
-                color: white;
-                font-size: 13px;
-            }
-            A:HOVER {
-                font-family: "宋体";
-                color: gold;
-                font-size: 13px;
-                cursor: crosshair;
-            }
-            BODY {
-                font-family: "宋体";
-                font-size: 13px;
-                color: white;
-            }
-            .go {
-                font-family: "宋体";
-                font-size: 13px;
-            }
-            .gy {
-                color: gray;
-            }
-            .rv {
-                color: white;
-                text-align: left;
-            }
-            .rv2 {
-                color: white;
-                background: #606060;
-                text-align: center;
-                width: 20px;
-            }
-            .menubox {
-                position: absolute;
-                padding: 1px;
-                width: 670px;
-                overflow: visible;
-                font-family: "宋体";
-                font-size: 13px;
-                top: 0;
-                left: 10;
-                z-index: 40
-            }
-            .mainbox {
-                position: absolute;
-                padding: 1px;
-                width: 670px;
-                height: 410px;
-                overflow: visible;
-                font-family: "宋体";
-                font-size: 13px;
-                color: white;
-                top: -500;
-                left: 10;
-                z-index: 2
-            }
-            .box1 {
-                position: absolute;
-                visibility: hidden;
-                border: 2px gray solid;
-                padding: 5px;
-                width: 220px;
-                overflow: visible;
-                font-family: "宋体";
-                font-size: 13px;
-                color: white;
-                z-index: 85;
-                background: url(./gifs/bg2.gif)
-            }
-            .box2 {
-                position: absolute;
-                visibility: hidden;
-                border: 2px gray solid;
-                padding: 5px;
-                width: 250px;
-                overflow: visible;
-                font-family: "宋体";
-                font-size: 13px;
-                color: white;
-                z-index: 80;
-                background: url(./gifs/bg2.gif)
-            }
-            .box3 {
-                position: absolute;
-                visibility: hidden;
-                border: 2px gray solid;
-                padding: 5px;
-                width: 650px;
-                overflow: visible;
-                font-family: "宋体";
-                font-size: 13px;
-                color: white;
-                z-index: 98;
-                background: url(./gifs/bg2.gif)
-            }
-            .box4 {
-                position: absolute;
-                visibility: hidden;
-                border: 2px gray solid;
-                padding: 5px;
-                width: 260px;
-                overflow: visible;
-                font-family: "宋体";
-                font-size: 13px;
-                color: white;
-                z-index: 70;
-                background: url(./gifs/bg2.gif)
-            }
-            .box5 {
-                position: absolute;
-                visibility: hidden;
-                border: 2px gray solid;
-                padding: 5px;
-                width: 500px;
-                overflow: visible;
-                font-family: "宋体";
-                font-size: 13px;
-                color: white;
-                z-index: 60;
-                background: url(./gifs/bg2.gif)
-            }
-            .boxh {
-                position: absolute;
-                visibility: hidden;
-                border: 2px gray solid;
-                padding: 3px;
-                width: 140px;
-                overflow: visible;
-                font-family: "宋体";
-                font-size: 13px;
-                color: white;
-                z-index: 99;
-                background: url(./gifs/bg2.gif)
-            }
-            .mat1 {
-                color: #909090;
-                cursor: crosshair;
-                font-size: 1px;
-                width: 20px;
-                height: 20px;
-            }
-            .mat2 {
-                color: #909090;
-                cursor: crosshair;
-                font-size: 1px;
-                background-repeat: no-repeat;
-                background-position: center center;
-            }
-            .matx {
-                border-collapse: collapse;
-                cellspacing=0 cellpadding=0}
-        </style>
+        <link rel="stylesheet" href="./css.css" />
         <script language="JavaScript1.2" type="text/javascript" src="./preference.js"></script>
         <script language="JavaScript1.2" type="text/javascript" src="./utility/db_exp.js"></script>
         <script language="JavaScript1.2" type="text/javascript" src="./utility/pre_load.js"></script>
@@ -172,38 +18,7 @@
         <script language="JavaScript1.2" type="text/javascript" src="./utility/db_msuf.js" charset="GB2312"></script>
         <script language="JavaScript1.2" type="text/javascript" src="./utility/db_rare.js" charset="GB2312"></script>
         <script language="JavaScript1.2" type="text/javascript" src="./utility/main.js" charset="GB2312"></script>
-        <script type="text/javascript">
-            function importFile(input) {
-                //直接读取.d2s文件，新浏览器不支持VBS，改成JS实现
-                //chrome IE10  
-                if (window.FileReader) {
-                    var file = input.files[0];
-                    filename = file.name.split(".")[0];
-                    var reader = new FileReader();
-                    reader.onloadend = function() {
-                        bin = new Uint8Array(reader.result);
-                        hexStr = "";
-                        console.log(bin.length, bin[0]);
-                        for (i = 0; i < bin.length; i++) {
-                            var s = '0' + parseInt(bin[i]).toString(16)
-                            //确保是两位数的HEX
-                            s = s.substr(s.length - 2, 2);
-                            hexStr += s.toUpperCase();
-                        }
-                        document.import_sheet.hex_data.value = hexStr;
-                    }
-                    reader.readAsArrayBuffer(file);
-                }//IE 7 8 9 10 未写
-                else if (typeof window.ActiveXObject != 'undefined') {
-                    alert('IE');
-                }//支持FF 未写
-                else if (document.implementation && document.implementation.createDocument) {
-                    alert('Firefox');
-                } else {
-                    alert('error');
-                }
-            }
-        </script>
+        <script type="text/javascript" src="./utility/file_io.js" charset="GB2312"></script>
     </head>
     <body background="./gifs/bg1.gif" onLoad="all_reset(); f_win_prep(); scr_change(0); arcal()" style="background-attachment:fixed;  overflow:hidden;">
         <center>
@@ -243,16 +58,12 @@
             <!-- =================== Import Data =================== //-->
             <!-- =================================================== //-->
             <span class=mainbox id="screen1">
-                <BR>
-                <BR>
-                <BR>
+                <BR><BR><BR>
                 如果你要创建新角色，你可以跳过此步骤直接进行下一步操作。<br>
                 <br>
                 请把所有的十六进制资料复制到下面的文字框后，点击“导入”按钮。<br>
-                (如果你没有十六进制文本编辑器，请<a href="http://www.baidu.com/s?ie=gb2312&cl=3&wd=WinHex+%BA%BA%BB%AF%D7%A2%B2%E1%B0%E6" target="_blank">点击这里</a>
-                查找 WinHex。)<BR>
-                *注意：v1.09 或 v1.10 的存档数据都可以导入。<BR>
-                <BR>
+                (如果你没有十六进制文本编辑器，请<a href="http://www.baidu.com/s?ie=gb2312&cl=3&wd=WinHex+%BA%BA%BB%AF%D7%A2%B2%E1%B0%E6" target="_blank">点击这里</a>查找 WinHex。)<BR>*注意：v1.09 或 v1.10 的存档数据都可以导入。
+                <BR><BR>
                 <form name="import_sheet" enctype="text/plain">
                     <table border=0>
                         <tr>
@@ -269,7 +80,7 @@
                         </tr>
                         <tr>
                             <td>
-                                也可直接打开存档文件<input type='file' accept=".d2s" onchange='importFile(this);'/>
+                                也可直接打开存档文件<input type='file' id='importd2sfile' accept='.d2s' onchange='importFile(this);'/>
                             </td>
                         </tr>
                     </table>
@@ -711,6 +522,7 @@
                                                 for (i = 0; i < 67; i++)
                                                     document.write('<option value=' + i + '>' + barb_name[i]);
                                                 document.write('</select>');
+                                                //-->
                                             </script>
                                         </td>
                                     </tr>
@@ -1976,20 +1788,14 @@
                     <textarea name="hex_answer" style="width:486px;"></textarea>
                 </td>
             </tr>
-        </table>
-        <br>
-        拷贝所有十六进制数据至WinHEX，粘贴为<span style="color:red;">"ASCII HEX"</span>
-        格式，保存为"<span id="charname" style="color:red;">(人物角色名).d2s"</span>
-        。
-<br>
-        <br>
+		</table>
+        <br>拷贝所有十六进制数据至WinHEX，粘贴为<span style="color:red;">"ASCII HEX"</span>
+        格式，保存为"<span id="charname" style="color:red;">(人物角色名).d2s"</span>。<br><br>
         如果选择了“生成批处理”，要求系统为Windows2003/XP或之前（自带debug.exe），<br>
-        拷贝所有的文字并粘贴到你的<span style="color:red;">记事本</span>
-        中，保存文件为批处理文件(*.bat)<br>
+        拷贝所有的文字并粘贴到你的<span style="color:red;">记事本</span>中，保存文件为批处理文件(*.bat)<br>
         并双击执行，同目录下自动生成人物存档。<br>
     </form>
-    <BR>
-    <a href="./utility/cre_help.html" target="_blank">[ 什么是创建? ]</a>
+    <BR><a href="./utility/cre_help.html" target="_blank">[ 什么是创建? ]</a>
 </span>
 <!-- ================================================ //-->
 <!-- =================== Top Page =================== //-->
@@ -2002,8 +1808,7 @@
                 <BR>
                 <img src="./gifs/diablo_lod.gif" border=0>
                 <img src="./gifs/v110.gif" border=0>
-                <br>
-                <br>
+                <br><br>
                 <img src="./gifs/logo1.gif" border=0>
                 <br>
                 版本 
@@ -2012,14 +1817,12 @@
                     document.write(ver_no);
                     //-->
                 </script>
-                <BR>
-                <BR>
+                <BR><BR>
                 设计：<a href="mailto:chacha_vs@yahoo.co.jp">Chacha@Japan</a>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;汉化：<a target=blank href=Tencent://Message/?Uin= 272922032&Site=中华人民共和国&Menu= yes onMouseOver="poph('<center>QQ：272922032</center>')" onMouseOut="unpoph()">天下我最笨</a>
                 <BR>
                 <img src="./gifs/chacha_mini.gif" border=0>
-                <BR>
-                <BR>
+                <BR><BR>
                 编辑模式：
                 <select onChange='MM_jumpMenu(this)'>
                     <script language="JavaScript1.2">
