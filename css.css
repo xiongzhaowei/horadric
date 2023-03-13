@@ -1,22 +1,22 @@
 A {
 text-decoration: none;
-font-family: "ËÎÌå";
+font-family: "宋体";
 color: white;
 font-size: 13px;
 }
 A:HOVER {
-font-family: "ËÎÌå";
+font-family: "宋体";
 color: gold;
 font-size: 13px;
 cursor: crosshair;
 }
 BODY {
-font-family: "ËÎÌå";
+font-family: "宋体";
 font-size: 13px;
 color: white;
 }
 .go {
-font-family: "ËÎÌå";
+font-family: "宋体";
 font-size: 13px;
 }
 .gy {
@@ -37,7 +37,7 @@ position: absolute;
 padding: 1px;
 width: 670px;
 overflow: visible;
-font-family: "ËÎÌå";
+font-family: "宋体";
 font-size: 13px;
 top: 0;
 left: 10;
@@ -49,7 +49,7 @@ padding: 1px;
 width: 670px;
 height: 410px;
 overflow: visible;
-font-family: "ËÎÌå";
+font-family: "宋体";
 font-size: 13px;
 color: white;
 top: -500;
@@ -63,7 +63,7 @@ border: 2px gray solid;
 padding: 5px;
 width: 220px;
 overflow: visible;
-font-family: "ËÎÌå";
+font-family: "宋体";
 font-size: 13px;
 color: white;
 z-index: 85;
@@ -76,7 +76,7 @@ border: 2px gray solid;
 padding: 5px;
 width: 250px;
 overflow: visible;
-font-family: "ËÎÌå";
+font-family: "宋体";
 font-size: 13px;
 color: white;
 z-index: 80;
@@ -89,7 +89,7 @@ border: 2px gray solid;
 padding: 5px;
 width: 650px;
 overflow: visible;
-font-family: "ËÎÌå";
+font-family: "宋体";
 font-size: 13px;
 color: white;
 z-index: 98;
@@ -102,7 +102,7 @@ border: 2px gray solid;
 padding: 5px;
 width: 260px;
 overflow: visible;
-font-family: "ËÎÌå";
+font-family: "宋体";
 font-size: 13px;
 color: white;
 z-index: 70;
@@ -115,7 +115,7 @@ border: 2px gray solid;
 padding: 5px;
 width: 500px;
 overflow: visible;
-font-family: "ËÎÌå";
+font-family: "宋体";
 font-size: 13px;
 color: white;
 z-index: 60;
@@ -128,7 +128,7 @@ border: 2px gray solid;
 padding: 3px;
 width: 140px;
 overflow: visible;
-font-family: "ËÎÌå";
+font-family: "宋体";
 font-size: 13px;
 color: white;
 z-index: 99;
