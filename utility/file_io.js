@@ -1,72 +1,71 @@
 <!--
 function importFile(input){
 	console.log(window.FileReader,typeof window.ActiveXObject,document.implementation,document.implementation.createDocument);
-	//Ö±½Ó¶ÁÈ¡.d2sÎÄ¼þ£¬ÐÂä¯ÀÀÆ÷²»Ö§³ÖVBS£¬¸Ä³ÉJSÊµÏÖ
-	//chrome¡¢IE10/11¡¢FFÒ²¿É
+	//ç›´æŽ¥è¯»å–.d2sæ–‡ä»¶ï¼Œæ–°æµè§ˆå™¨ä¸æ”¯æŒVBSï¼Œæ”¹æˆJSå®žçŽ°
+	//chromeã€IE10/11ã€FFä¹Ÿå¯
 	if (window.FileReader){
 		var file = input.files[0];
 		var reader = new FileReader();
 		reader.onloadend = function() {
-			//Òì²½²Ù×÷£¬Íê³ÉÊÂ¼þ´úÂë
+			//å¼‚æ­¥æ“ä½œï¼Œå®Œæˆäº‹ä»¶ä»£ç 
 			bin = new Uint8Array(this.result);
 			hexStr = "";
-			for (var i=0;i<bin.length;i++) {	//for...ofÎªES6±ê×¼
+			for (var i=0;i<bin.length;i++) {	//for...ofä¸ºES6æ ‡å‡†
 				var s = '0' + parseInt(bin[i]).toString(16);
-				//È·±£ÊÇÁ½Î»ÊýµÄHEX
+				//ç¡®ä¿æ˜¯ä¸¤ä½æ•°çš„HEX
 				s = s.substr(s.length - 2, 2);
 				hexStr += s.toUpperCase();
 			}
-			document.import_sheet.hex_data.value = hexStr;	//Î´»»ÐÐ£¬²»Ó°Ïìµ¼Èë
+			document.import_sheet.hex_data.value = hexStr;	//æœªæ¢è¡Œï¼Œä¸å½±å“å¯¼å…¥
 			importing();
 		}
 		reader.readAsArrayBuffer(file);
 	}
-	//ÀÏIE²»Ö§³ÖH5£¬ÔÝÎ´Ð´
+	//è€IEä¸æ”¯æŒH5ï¼Œæš‚æœªå†™
 	/*/https://www.cnblogs.com/vicky-li/p/10030832.html
 	http://c.biancheng.net/view/5995.html
 	https://www.cnblogs.com/xiaocaiyuxiaoniao/p/8324543.html
 	https://www.cnblogs.com/yaotome/p/9002172.html
 	*/
 	else if (typeof window.ActiveXObject != 'undefined') {
-		alert('IE8/9ÉÐÎ´Ö§³Ö£¬ÇëÓÃ¸üÐÂä¯ÀÀÆ÷»ò×ÔÐÐµ¼ÈëHEXÊý¾Ý£¡');
-		//IE8Ã»ÓÐÈ¨ÏÞ, input.value = fakepath\file£¬ÓÖÃ»ÓÐH5µÄFileReader...
+		alert('IE8/9å°šæœªæ”¯æŒï¼Œè¯·ç”¨æ›´æ–°æµè§ˆå™¨æˆ–è‡ªè¡Œå¯¼å…¥HEXæ•°æ®ï¼');
+		//IE8æ²¡æœ‰æƒé™, input.value = fakepath\fileï¼Œåˆæ²¡æœ‰H5çš„FileReader...
 		//alert(document.selection.createRange().text);
-		//https://cloud.tencent.com/developer/article/1691670£¬ÕâÑùÄÜµÃµ½ÕæÊµÂ·¾¶
+		//https://cloud.tencent.com/developer/article/1691670ï¼Œè¿™æ ·èƒ½å¾—åˆ°çœŸå®žè·¯å¾„
 		var xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
 		input.select();
-		xmlhttp.open("GET", document.selection.createRange().text, false);	//ÈÔÃ»È¨ÏÞ¡­¡­
-		//xmlhttp.open("GET", input.value, false);	//trueÎªÒì²½ÏìÓ¦
+		xmlhttp.open("GET", document.selection.createRange().text, false);	//ä»æ²¡æƒé™â€¦â€¦
+		//xmlhttp.open("GET", input.value, false);	//trueä¸ºå¼‚æ­¥å“åº”
 		xmlhttp.send(); //	load()?
-		var bin = xmlhttp.responseBody;	//½á¹û·µ»ØÎªÎÞ·ûºÅÕûÊýÊý×é
+		var bin = xmlhttp.responseBody;	//ç»“æžœè¿”å›žä¸ºæ— ç¬¦å·æ•´æ•°æ•°ç»„
 		//alert(bin[0]);
 		hexStr = "";
 		for (var i=0;i<bin.length;i++) {
 			var s = '0' + parseInt(bin[i]).toString(16);
-			//È·±£ÊÇÁ½Î»ÊýµÄHEX
+			//ç¡®ä¿æ˜¯ä¸¤ä½æ•°çš„HEX
 			s = s.substr(s.length - 2, 2);
 			hexStr += s.toUpperCase();
 		}
 		document.import_sheet.hex_data.value = hexStr;		//	*/
 	}
-	//Ö§³ÖFFÎ´Ð´£¬Ã²ËÆÇ°ÊöChrome´úÂëÒ²ÄÜ¹¤×÷
+	//æ”¯æŒFFæœªå†™ï¼Œè²Œä¼¼å‰è¿°Chromeä»£ç ä¹Ÿèƒ½å·¥ä½œ
 	else if (document.implementation && document.implementation.createDocument) {
-		alert('FireFox´úÂëÉÐÎ´Íê³É£¡');
+		alert('FireFoxä»£ç å°šæœªå®Œæˆï¼');
 	} else {
-		alert('ä¯ÀÀÆ÷²»Ö§³Ö£¬Çë×ÔÐÐµ¼ÈëHEXÊý¾Ý£¡');
+		alert('æµè§ˆå™¨ä¸æ”¯æŒï¼Œè¯·è‡ªè¡Œå¯¼å…¥HEXæ•°æ®ï¼');
 	}
-
 }
 
-//Œ¢Uint8Array±£´æžé¶þßMÑuÎÄ¼þ, https://code-examples.net/zh-TW/q/182e049
+//å°‡Uint8Arrayä¿å­˜ç‚ºäºŒé€²è£½æ–‡ä»¶, https://code-examples.net/zh-TW/q/182e049
 function saveD2s(hex_dum,fileName){
 	var bin = new Uint8Array(hex_dum.length/2);
 	for (var i=0;i<hex_dum.length;i+=2){
 		bin[i/2]=parseInt('0x'+hex_dum.substr(i,2));
 	}
 	//console.log(bin);
-	blob = new Blob([bin]);			//,{type: 'application/octet-stream'});
+	blob = new Blob([bin]);			//åˆ é™¤ï¼Œé»˜è®¤MIMEç±»åž‹,{type: 'application/octet-stream'});
 	var url=URL.createObjectURL(blob);
-	downloadURL(url, fileName);		//ÎªÊ²Ã´blob±£´æºóÊÇ10½øÖÆÊý×Ö·û´®£¿±ØÐëÐ´[bin]¡­¡­
+	downloadURL(url, fileName);		//ä¸ºä»€ä¹ˆblobä¿å­˜åŽæ˜¯10è¿›åˆ¶æ•°å­—ç¬¦ä¸²ï¼Ÿå¿…é¡»å†™[bin]â€¦â€¦
 	setTimeout(function(){return URL.revokeObjectURL(url);}, 1000);
 }
  function downloadURL(data,fileName){
