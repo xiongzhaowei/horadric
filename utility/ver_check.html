@@ -3,19 +3,18 @@
 	<title>Horadric编辑器版本检测</title>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<script language="JavaScript1.2">
-			<!--
-			var ver_no = opener.document.insheet.verver.value;
-			var siteurl = opener.document.insheet.siteurl.value;
-			var ver_no_new = ver_no;
-			document.write('<scr'+'ipt language="javascript" type="text/javascript" src="'+siteurl+'version.js"></scr'+'ipt>');
-			//-->
-		</script>
 		<style type="text/css">
 			A{text-decoration:none; font-family:"Charcoal"; color:gray; font-size:11px;}
 			A:HOVER{font-family:"Charcoal"; color:red; font-size:11px; cursor:crosshair;}
 			BODY{font-family:"Verdana"; font-size:10px; color:white; background-color:black;}
 		</style>
+		<script language="javascript" type="text/javascript" src="../preference.js"></script>
+		<script language="JavaScript1.2">
+			<!--
+			var ver_no_new = ver_no;
+			document.write('<scr'+'ipt language="javascript" type="text/javascript" src="'+dl_site+'version.js"></scr'+'ipt>');
+			//-->
+		</script>
 	</head>
 	<body>
 		<center>
@@ -27,7 +26,7 @@
 					document.write("没有新版本。");
 				}else{
 					document.write("发现新版本" + ver_no_new + "！！<br><br>^-^<br /><br />");
-					document.write('<a href="' + siteurl + '">到这里下载更新吧！</a>');
+					document.write('<a href="' + dl_site + '">到这里下载更新吧！</a>');
 				}
 				//-->
 			</script>
