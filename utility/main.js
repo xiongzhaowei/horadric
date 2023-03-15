@@ -4773,19 +4773,20 @@ function create_data()
 	hex_ans = "";
 	saveName= document.stats_sheet.chr_name.value + ".d2s";
 	if(document.last_sheet.use_debug.checked){
-		//GenerateHEXdata(hex_ans);
+		//WriteBatchFile(hex_ans);
 		var filesize = hex_dum.length / 2;
 		for(i = 0; i < hex_dum.length; i+=2) hex_ans += String.fromCharCode(32) + hex_dum.substr(i,2);
+		//每行16位(48/3)
 		for(hex_dum = "",i = 0; i*48 < hex_ans.length; i++) hex_dum += "e" + tohex(i+16,16) + "0" + hex_ans.substr(i*48,48) + String.fromCharCode(13);
 		hex_dum += "rcx" + String.fromCharCode(13) + tohex(filesize,16) + String.fromCharCode(13) + "n" + saveName + String.fromCharCode(13) + "w" + String.fromCharCode(13) + "q" + String.fromCharCode(13) + ":begin" + String.fromCharCode(13) + "debug<%0>nul" + String.fromCharCode(13);
 		hex_dum = ";@echo off" + String.fromCharCode(13) + ";goto begin" + String.fromCharCode(13) + hex_dum;
 		document.last_sheet.hex_answer.value = hex_dum;
 	}
 	else{
-		//WriteBatchFile(hex_ans);加换行
+		//GenerateHEXdata(hex_ans);加换行，每行32位
 		for(i = 0; i < hex_dum.length; i+=64) hex_ans += hex_dum.substr(i,64) + String.fromCharCode(13);
 		document.last_sheet.hex_answer.value = hex_ans;
-		saveD2s(hex_dum,saveName);
+		if (window.FileReader){ saveD2s(hex_dum,saveName); }
 	}
 	document.getElementById("charname").innerHTML = saveName;
 	document.last_sheet.hex_answer.focus();

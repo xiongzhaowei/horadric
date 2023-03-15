@@ -28,25 +28,25 @@ function importFile(input){
 	https://www.cnblogs.com/yaotome/p/9002172.html
 	*/
 	else if (typeof window.ActiveXObject != 'undefined') {
-		alert('IE8/9尚未支持，请用更新浏览器或自行导入HEX数据！');
-		//IE8没有权限, input.value = fakepath\file，又没有H5的FileReader...
-		//alert(document.selection.createRange().text);
+		/*/网页不在本地，则input.value = fakepath\file，又没有H5的FileReader...
 		//https://cloud.tencent.com/developer/article/1691670，这样能得到真实路径
-		var xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
 		input.select();
-		xmlhttp.open("GET", document.selection.createRange().text, false);	//仍没权限……
-		//xmlhttp.open("GET", input.value, false);	//true为异步响应
-		xmlhttp.send(); //	load()?
-		var bin = xmlhttp.responseBody;	//结果返回为无符号整数数组
-		//alert(bin[0]);
+		input.blur();	//IE9
+		var fso = new ActiveXObject("Scripting.FileSystemObject");
+		var file = fso.OpenTextFile(document.selection.createRange().text, 1); //*/
+		var file = fso.OpenTextFile(input.value, 1);
+		var content = file.ReadAll();
+		file.Close();
 		hexStr = "";
-		for (var i=0;i<bin.length;i++) {
-			var s = '0' + parseInt(bin[i]).toString(16);
+		for (var i=0;i<content.length;i++) {
+			var s= '0' + content.charCodeAt(i).toString(16);	//charCodeAt会读取双字节，且跳过非可见字符？
 			//确保是两位数的HEX
-			s = s.substr(s.length - 2, 2);
+			var bytes=Math.floor(s.length/2)*2;
+			s = s.substr(s.length - bytes, bytes);
 			hexStr += s.toUpperCase();
 		}
-		document.import_sheet.hex_data.value = hexStr;		//	*/
+		document.import_sheet.hex_data.value = hexStr;		//*/
+		alert('如果此网页在服务器上，无权打开文件，请下载到本地运行。\n即使下载运行，也不支持二进制文件读取，请用WinHEX类软件！\n\n生成的16进制数据仅供娱乐，无法导入为存档……\n\nIE9以下太古老。请用现代浏览器，以上问题全部搞定。');
 	}
 	//支持FF未写，貌似前述Chrome代码也能工作
 	else if (document.implementation && document.implementation.createDocument) {
