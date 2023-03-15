@@ -16,7 +16,7 @@ var form_resize = 0;  // <=== 是否重置窗体大小? 是=1;否=0
 
 //--------- Don't Change ----------
 var ver_no = "1.23.46";
-var dl_site = "https://doyou.github.io/d2x-horadric-cn/";
+var chk_site = "https://doyou.github.io/d2x-horadric-cn/";
 //---------------------------------
 
 //-->
