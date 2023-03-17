@@ -4786,7 +4786,7 @@ function create_data()
 		//GenerateHEXdata(hex_ans);加换行，每行32位
 		for(i = 0; i < hex_dum.length; i+=64) hex_ans += hex_dum.substr(i,64) + String.fromCharCode(13);
 		document.last_sheet.hex_answer.value = hex_ans;
-		if (window.FileReader){ saveD2s(hex_dum,saveName); }
+		saveD2s(hex_dum,saveName);
 	}
 	document.getElementById("charname").innerHTML = saveName;
 	document.last_sheet.hex_answer.focus();
