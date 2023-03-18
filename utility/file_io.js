@@ -2,11 +2,13 @@ function importFile(input){
 	//console.log(window.FileReader,typeof window.ActiveXObject,document.implementation,document.implementation.createDocument);
 	//直接读取.d2s文件，新浏览器不支持VBS，改成JS实现
 	//chrome、IE10/11、FF也可
-	var hexStr = "";
 
 	if (window.FileReader){
-		var fileURL = input.files[0];
-		hexStr = ReadHexFromFile(fileURL);
+		var file = input.files[0];
+		ReadHexFromFile(file).then(function(data){	//异步的resolve操作，无法等候await将值返回给上级变量……
+			document.import_sheet.hex_data.value = data;
+			importing();
+		});
 	}
 	/*/老IE不支持H5、高版本ES
 	https://www.cnblogs.com/vicky-li/p/10030832.html
@@ -22,7 +24,7 @@ function importFile(input){
 		input.select();
 		input.blur();	//IE9
 		fileURL=document.selection.createRange().text //*/
-		hexStr = AdodbReadHexFromFile(fileURL);
+		document.import_sheet.hex_data.value = AdodbReadHexFromFile(fileURL)
 	}
 	//支持FF未写，貌似前述Chrome代码也能工作
 	else if (document.implementation && document.implementation.createDocument) {
@@ -30,8 +32,6 @@ function importFile(input){
 	} else {
 		alert('浏览器不支持，请自行导入HEX数据！');
 	}
-	document.import_sheet.hex_data.value = hexStr;	//未换行，不影响导入
-	if (window.FileReader) importing();
 }
 
 //將Uint8Array保存為二進製文件, https://code-examples.net/zh-TW/q/182e049
@@ -58,7 +58,7 @@ function saveD2s(hex_dum,fileName){
 	a.style = 'display: none';
 	a.click();
 	a.remove();
-};
+}
 
 //使用ActiveX，要求浏览器开启相应功能和安全设置
 function AdodbReadHexFromFile(fileURL){
@@ -110,20 +110,24 @@ function AdodbReadHexFromFile(fileURL){
 	}
 	return hexStr;
 }
-//使用FileReader，要求浏览器支持
-function ReadHexFromFile(fileURL){
-	var reader = new FileReader();
-	var hexStr = "";
-	reader.onloadend = function() {
-		//异步操作，完成事件代码
-		bin = new Uint8Array(this.result);
-		for (var i=0;i<bin.length;i++) {	//for...of为ES6标准
-			var s = '0' + parseInt(bin[i]).toString(16);
-			//确保是两位数的HEX
-			s = s.substr(s.length - 2, 2);
-			hexStr += s.toUpperCase();
-		}
-		return hexStr;
-	}
-	reader.readAsArrayBuffer(fileURL);
+//使用FileReader，要求浏览器支持，异步会导致return为无效数据，需要处理
+//https://www.runoob.com/w3cnote/javascript-promise-object.html
+function ReadHexFromFile(file){
+	//返回异步操作及回调函数设定
+	return new Promise(function(resolve,reject){
+		var hexStr = "";
+		var reader = new FileReader();
+		reader.readAsArrayBuffer(file);
+		reader.onloadend = function() {
+			//异步操作，完成事件代码
+			bin = new Uint8Array(this.result);
+			for (var i=0;i<bin.length;i++) {	//for...of为ES6标准
+				var s = '0' + parseInt(bin[i]).toString(16);
+				//确保是两位数的HEX
+				s = s.substr(s.length - 2, 2);
+				hexStr += s.toUpperCase();
+			}
+			resolve(hexStr);
+		};
+	});
 }
