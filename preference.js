@@ -10,13 +10,13 @@
 var edit_mode = 0;  // <=== Change this number
 if(document.location.hash.indexOf("9")>0)edit_mode = 9;
 
-var form_resize = 0;  // <=== ÊÇ·ñÖØÖÃ´°Ìå´óÐ¡? ÊÇ=1;·ñ=0
+var form_resize = 0;  // <=== æ˜¯å¦é‡ç½®çª—ä½“å¤§å°? æ˜¯=1;å¦=0
 
 
 
 //--------- Don't Change ----------
-var ver_no = "1.10.01";
-var dl_site = "http://homepage.mac.com/chatoppe/d2lod/";
+var ver_no = "1.23.49";
+var chk_site = "https://doyou.github.io/d2x-horadric-cn/";
 //---------------------------------
 
 //-->
